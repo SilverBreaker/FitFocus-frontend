@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body{
+    display :flex;
+    background-color:#0f1624 ;
+    font-family: "PT Sans", sans-serif;
+    font-style: normal;
+    color: white;
+    margin:0px;
+    padding:0px;
+    
+    
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+ 
+}
+*{
+      margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}    
+.SideMenu{
+    margin-right: 0px;
+    top:0px;
+    left:0px;
+    
+    background-color: #0f1624;
+    
+    height:100vh;
+    
+    
+    position:sticky
+       
+    
+}
+#FitfocusSM{  /* sidemenu heading*/
+   position:sticky ;
+    
+    border: 2px,solid,#262933;
+    display: flex;
+    align-items: center;
+    top:0px;
+    padding-bottom: 5px ;
+    padding-right: 82px;
+    gap: 10px;
+    padding-top: 10px;
+    font-size: 30px;  
+}
+#SMlist{ /*side menu lists*/
+    position:sticky;
+    border: 2px,solid,#262933;
+    align-items: center  ;
+    padding-bottom: 400px ;
+    padding-right: 82px;
+    gap: 10px;
+    padding-top: 20px;
+    font-size: 12px;
+    left:0px;
+    
+
+    
+   
+}
+.liele a{ 
+    font-weight: 100;
+    text-decoration: none;
+    color:white;  
+}
+.TopBar{   /* top bar of every page in the website*/
+    border: 2px,solid,#262933;
+    align-items: center;
+    
+    padding: 10px;
+    
+    padding-left:1150px;
+    padding-top: 25px;
+    box-sizing: border-box;
+    width: 1270px;
+    height:75px;
+    font-size: 20px;
+
+}
+.Todayprogress{
+   width:1200px;
+   height: 300px;
+   background-color: #172136;
+   border:2px solid,#262933;
+   margin-left: 30px;
+   margin-top: 35px;
+   padding-left: 500px;
+   padding-top: 20px;
+}
+.pofD{ /* para of dashboard*/
+    color: grey;
+    font-weight: 100;
+}
+.Fitness-tracker{
+    height :592px;
+    width :379px;
+    background-color:#172136;
+    border: 2px solid,#262933;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 50px;
+
+    
+}
+#textandbutton{  /*this is of FT's text and button*/
+        display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+#buttonofFT{
+    background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 15px;
+    height: 40px;
+    width: 88px;
+    margin-top: 10px;
+
+    
+    
+}
+
+#pofFT{   
+    color: grey;
+    font-weight: 100;
+    font-size: 15px;
+}
+.Health-Inspect{
+     height :592px;
+    width :379px;
+    background-color:#172136;
+    border: 2px solid,#262933;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    padding-left: 15px;
+    
+    
+
+}
+#pofHI{ /*para of health inspect*/
+     color: grey;
+    font-weight: 100;
+    font-size: 12px;
+
+}
+.Restofcontent{ /*this contains all of dashboard expect of todays progress */
+    display:flex;
+}
+.areaandweekly{
+    display: flex;
+    flex-direction: column;
+}
+.Area{ /*Area to focus on section*/
+     height :450px;
+    width :379px;
+    background-color:#172136;
+    border: 2px solid,#262933;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+     padding-top: 20px;
+    padding-left: 15px;
+    
+
+}
+.weekprogress{
+      height :450px;
+    width :379px;
+    background-color:#172136;
+    border: 2px solid,#262933;
+    
+    margin-left: 30px;
+    margin-bottom: 50px;
+     padding-top: 20px;
+    padding-left: 15px;
+
+}
+
+
+
