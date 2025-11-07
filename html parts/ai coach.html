@@ -20,6 +20,11 @@
                     <h2 class= "liele">
                         <img src = "icons/workout icon.png" width = "24" height = "24">
                     <a href = "workout.html">Today's Workout</a></h2>
+                    
+                    <h2 class = "liele">
+                       <img src = "icons/calorie counter.png" width = "24" height = "24">
+                        <a href = "caloriecounter.html"><span>Calorie Counter</span></a>
+                   </h2>
 
                     <h2 class = "liele">
                         <img src = "icons/ai coach icon.png" width = "24" height = "24">
@@ -28,23 +33,36 @@
                     <h2 class = "liele">
                         <img src = "icons/map.png" width = "24" height = "24">
                     <a href = "map.html">map</a></h2>
+
+                    <h2 class = "liele">
+                    <img src = "icons/map.png" width = "24" height = "24">
+                    <a href = "reminders.html"><span>Reminders</span></a>
+                    </h2>
                 </ul>
             </nav>
+            <section id = "User">
+              <div>
+                <img src = "icons/user icon.png" height = "55" width="55">
+              </div>
+              <div id = "username">
+                <h2>User</h2>
+                <p class  = "pofD">user@gmail.com</p></div>
+          </section>
         </aside>
        
     
        <main>
         <h1 class = "TopBar">AI Coach</h1>
-        <section id = "ai">
+        <section class = "ai">
+            <div class = "textandparaofAI">
+            <h2>AI Fitness Coach</h2>
+            <p class = "pofD">Ask me anything about fitness, nutrition, or your progress.</p></div>
 
-            <div class = "ai output" id = "output">
-
-            </div>
-            <div class = "ai input" id = "input">
-                <input type = "text" id = "chat-input" placeholder="ask AI Coach">
-                <button id = "ask">send</button>
-            </div>
         </section>
+         <section class = "inputandbuttonofAI">
+                <input type = text id = "textinput"> </input>
+                 <button id = "buttonofAI">Send</button>
+         </section>
        </main>
     </body>
 </html>

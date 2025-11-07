@@ -21,6 +21,12 @@
                 <h2 class = "liele">
                     <img src = "icons/workout icon.png" width = "24" height = "24">
                     <a href = "workout.html"><span>Today's Workout</span></a>
+                  
+                </h2>
+                <h2 class = "liele">
+                  <img src = "icons/calorie counter.png" width = "24" height = "24">
+                  <a href = "caloriecounter.html"><span>Calorie Counter</span></a>
+
                 </h2>
                 <h2 class = "liele">
                     <img src = "icons/ai coach icon.png" width = "24" height = "24">
@@ -30,9 +36,20 @@
                     <img src = "icons/map.png" width = "24" height = "24">
                     <a href = "map.html"><span>map</span></a>
                 </h2>
+                <h2 class = "liele">
+                    <img src = "icons/map.png" width = "24" height = "24">
+                    <a href = "reminders.html"><span>Reminders</span></a>
+                </h2>
 
             </ul></nav>
-        </nav>
+          <section id = "User">
+              <div>
+                <img src = "icons/user icon.png" height = "55" width="55">
+              </div>
+              <div id = "username">
+                <h2>User</h2>
+                <p class  = "pofD">user@gmail.com</p></div>
+          </section>
     </aside>
 
     <!--main page-->
@@ -42,35 +59,80 @@
       <section class = "Todayprogress">
         <h2>Today's Progress</h2>
         <p class = "pofD">Your daily goal completion.</p>
+
+        <div class = "progressempty">
+          <div class = "filledprogress">
+            <div class = "progresstext">
+              <!--Temporary Text-->
+              <h2>68%</h2>
+              <p id = "pofTP">Overall</p>
+            </div>
+          </div>
+        </div>
       </section>
       
       <div class = "Restofcontent">
+
+
       <!--Fitness Tracker-->
       <section class = "Fitness-tracker" >
+        <div id = "FlexforFT">
+        <div id = "padaddFT"><h2>Fitness Tracker</h2><p class = "pofD">Log your daily progress for your fitness habits</p></div>
+        <div > <button id = "buttonofFT">add habit</button></div>
+        </div>
 
-        <div id = "textandbutton"><h2>Fitness Tracker</h2> <button id = "buttonofFT">add habit</button></div>
-        <div id = "pofFT"><p>Log your daily progress for your fitness habits</p></div>
+        <div class = "basecaseofFT">
+          <div id = "flexforFTSgoals">
+            <div><img src = "icons/fitness tracker icon/pushup.png" height ="60" width="60"></div>
+            <div><h2 id = "textforGoals">Push-Ups</h2></div><div id ="goalquantity"><p class = "pofD">Goal: 50reps</p></div>
+          </div>
+          
+          <div id = "flexforInputFT">
+          <div ><input type = "text" id ="inputforFT" text = "Enter Progress...." ></div>
+          <div><button id = "buttonforGoal">Log</button></div>
+          </div>
+          <div id = "LinearProgress"><!---progress-----></div>
+
+        </div>
       </section>
+
+
 
       <!--health inspect-->
       <section class = "Health-Inspect">
         <h2>Health Inspect</h2>
         <p id = "pofHI">An AI-powered review of your daily progress and actionable tips</p>
-        <button>Inspect</button>
+        <div id = "OutputHI">
+          <!---Ai Output-->
+        </div>
+        <button id = "InspectButton">Inspect</button>
 
       </section>
 
       <!--Areas to Focus on-->
       <div class = "areaandweekly">
       <section class = "Area">
-        <h2>Areas to Focus on</h2>
+        <div id = "textandiconofarea">
+        <img src = "icons/areas to focus on.png" alt = "area">
+        <h2>Areas to Focus on</h2></div>
+
+        <div id = "BasecaseofArea">
+          <div id = "FlexforbasecaseArea">
+             <div><img src = "icons/area to focus on/hydration.png" height = "40"  width = "35"></div>
+             <div id = "textforbasecaseArea"><p>Hydration</p></div>
+             <div id = "paraofbasecaseArea"><p class = "pofD">2/3 Litres</p></div>
+          </div>
+
+          <div id = "progressforbasecaseArea"></div>
+          <div id = "bottomparaforbasecaseArea"><p class = "pofD">You've only had 4/8 glasses of water. Let's drink some more!</p></div>
+        </div>
 
       </section>
 
       <!--weekly progress-->
       <section class = "weekprogress">
         <h2>Weekly Progress</h2>
-        <p class = "pofD">Your.</p>
+        <p class = "pofD">Your goal completion, weight, and macro trends over the last 7 days..</p>
       </section></div></div>
     </main>
     

@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset = UTF-8>
-        <title>FitFocus</title>
-        <link rel = "stylesheet" href = "style.css">
-    </head>
-    <body>
-         <!--sidebar-->
-       <aside class = "SideMenu">
-         <h1 id = "FitfocusSM">
+<html lang = en>
+   <head>
+      <meta charset = UTF-8>
+      <title>FitFocus</title>
+      <link rel = "stylesheet" href = "style.css">
+   </head>
+   <body>
+    <!--sidebar-->
+    <aside class = "SideMenu">
+        <h1 id = "FitfocusSM">
             <img src = "icons/fitfocus dumbell.png" width = "60" height = "60">
             <span>FitFocus</span>
-         </h1>
+        </h1>
         <nav>
             <ul id = "SMlist">
                 <h2 class = "liele">
                     <img src = "icons/dashboard icon.png" width = "24" height = "24">
-                    <a href = "html part.html">Dashboard</a>
+                    <a href = "html part.html"> <span>Dashboard</span></a>
                 </h2>
                 <h2 class = "liele">
                     <img src = "icons/workout icon.png" width = "24" height = "24">
-                    <a href = "workout.html">Today's Workout</a>
-
+                    <a href = "workout.html"><span>Today's Workout</span></a>
+                  
                 </h2>
                 <h2 class = "liele">
                   <img src = "icons/calorie counter.png" width = "24" height = "24">
@@ -30,17 +30,18 @@
                 </h2>
                 <h2 class = "liele">
                     <img src = "icons/ai coach icon.png" width = "24" height = "24">
-                    <a href = "ai coach.html">Ai Coach</a>
+                    <a href = "ai coach.html"><span>Ai Coach</span></a>
                 </h2>
                 <h2 class = "liele">
                     <img src = "icons/map.png" width = "24" height = "24">
-                    <a href = "map.html">map</a>
+                    <a href = "map.html"><span>map</span></a>
                 </h2>
                 <h2 class = "liele">
                     <img src = "icons/map.png" width = "24" height = "24">
                     <a href = "reminders.html"><span>Reminders</span></a>
                 </h2>
-            </ul>
+
+            </ul></nav>
         </nav>
         <section id = "User">
               <div>
@@ -50,20 +51,23 @@
                 <h2>User</h2>
                 <p class  = "pofD">user@gmail.com</p></div>
           </section>
-       </aside> 
-   
-       <main>
-          <h1 class = "TopBar">Map</h1>
-          <!--map-->
-          <section class="map">
-            <h2>Local Health Map</h2>
-            <p class="pofD">Find nearby gyms, healthy restaurants, and parks</p>
-            <div class = "mapINT">
+    </aside>
+    <main>
+        <h1 class = "TopBar">Counter</h1>
+        <section class = "CC">
+        <section class = "Uploadmeapics">
+            <h2>Upload Your Meal</h2>
+            <p class = "pofD">Upload a picture of your food to calculate its calories and macros.</p>
+            <button id = "mealbutton">Analyse</button>
+        </section>
 
-            </div>
+        <section class = "nutrition">
+            <h2>Nutritional Analysis</h2>
+            <p class = "pofD">Here's the estimated nutritional breakdown of your meal.</p>
 
-          </section>
-       </main>
-
+        </section>
+        </section>
+    
+    </main>
     </body>
-</html>
+    </html>

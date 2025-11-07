@@ -7,19 +7,32 @@ body{
     color: white;
     margin:0px;
     padding:0px;
+    overflow-x: hidden;
+
+    
+  
+    
     
     
 }
-html, body {
-  width: 100%;
-  overflow-x: hidden;
- 
+
+html{
+    scroll-behavior:smooth;
 }
 *{
       margin: 0;
   padding: 0;
   box-sizing: border-box;
 }    
+
+
+
+
+
+
+/* ==================================
+             SIDE MENU
+   ==================================*/
 .SideMenu{
     margin-right: 0px;
     top:0px;
@@ -41,106 +54,211 @@ html, body {
     display: flex;
     align-items: center;
     top:0px;
-    padding-bottom: 5px ;
-    padding-right: 82px;
-    gap: 10px;
-    padding-top: 10px;
-    font-size: 30px;  
+    padding-bottom: .34014vw ;
+    padding-right: 5.57823vw;
+    gap: .68027vw;
+    padding-top: .68027vw;
+    font-size: 1.875rem;  
 }
 #SMlist{ /*side menu lists*/
     position:sticky;
     border: 2px,solid,#262933;
     align-items: center  ;
-    padding-bottom: 400px ;
-    padding-right: 82px;
-    gap: 10px;
-    padding-top: 20px;
-    font-size: 12px;
+    padding-bottom: 24vw ;
+    padding-right: 5.57823vw;
+    gap: .68027vw;
+    padding-top: 1.36054vw;
+    font-size: .75rem;
     left:0px;
-    
-
-    
-   
 }
+#User{
+  border: 2px,solid,#262933;
+  height: 5.10204vw;
+  display: flex;
+  align-items: center;
+  font-size: .78125rem;
+  padding-left: 1.36054vw;
+  
+}
+#username{
+    padding-left: .68027vw;
+}
+
+
 .liele a{ 
     font-weight: 100;
     text-decoration: none;
     color:white;  
 }
+
+
+
+
+
+
+/*==================================
+       DASHBOARD
+  ==================================*/
+
 .TopBar{   /* top bar of every page in the website*/
     border: 2px,solid,#262933;
     align-items: center;
     
     padding: 10px;
     
-    padding-left:1150px;
-    padding-top: 25px;
+    padding-left:75vw;
+    padding-top: 3.75vh;
+   
     box-sizing: border-box;
-    width: 1270px;
-    height:75px;
-    font-size: 20px;
+    width: 82.75vw;
+    height:11.5vh;
+    font-size: 1.2rem;
 
 }
+
+/*=========TODAYS PROGRESS===========*/
 .Todayprogress{
-   width:1200px;
-   height: 300px;
+   width:77.41vw;
+   height: 55vh;
    background-color: #172136;
    border:2px solid,#262933;
-   margin-left: 30px;
-   margin-top: 35px;
-   padding-left: 500px;
-   padding-top: 20px;
+   margin-left: 4vh;
+   margin-top: 5vh;
+   padding-left: 33vw;
+   padding-top: 4vh;
 }
 .pofD{ /* para of dashboard*/
     color: grey;
     font-weight: 100;
 }
+.progressempty{
+   background: conic-gradient(#4abaaf 55%, #313135 0 );
+   height : 15vw;
+   width: 15vw;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 2vw;
+   margin-left: -2vw;
+   transition: background 0.4s ease;
+   
+
+}
+.filledprogress{
+    background-color:#172136;
+    height: 10vw;
+    width:10vw;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.progresstext{
+    font-weight:120;
+    font-size: 1.875rem;
+}
+
+#pofTP{
+     color: grey;
+    font-weight: 100;
+    font-size: 1.2rem;
+    margin-left: 1.02041vw;
+}
+
+
+
+/*==========FITNESS TRACKER===========*/
 .Fitness-tracker{
-    height :592px;
-    width :379px;
+    height :84.5vh;
+    width :23.75vw;
     background-color:#172136;
     border: 2px solid,#262933;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-bottom: 50px;
+    margin-left: 4vh;
+    margin-top: 4.5vh;
+    margin-bottom: 5vh;
+    
 
     
 }
-#textandbutton{  /*this is of FT's text and button*/
-        display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 20px;
-}
-
 #buttonofFT{
     background-color: #4abaaf;
     color:white;
     font-weight: 100;
-    font-size: 15px;
-    height: 40px;
-    width: 88px;
-    margin-top: 10px;
-
-    
-    
+    font-size: 0.94rem;
+    height: 7vh;
+    width: 6vw;
+    margin-top: 2vh;
+}
+#FlexforFT{
+    display:flex;
+    padding: .68027vw;
+    padding-right: .68027vw;
+}
+#padaddFT{
+    padding-top: .68027vw;
+    padding-left: .68027vw;
+}
+#flexforFTSgoals{
+  display: flex;
+  margin-top: 1.36054vw;
+  align-items: center;
+  font-size: .875rem;
+}
+#goalquantity{
+    margin-left: 7.80272vw;
 }
 
-#pofFT{   
-    color: grey;
+#flexforInputFT{
+    display:flex;
+    align-items: center;
+}
+#inputforFT{
+    height: 2.38095vw;
+    width:  16.60544vw;
+    background-color:#0f1624;
+    border: .13605vw solid,#262933;
+    
+    margin-left: 0.5vw;
+    color:white;
+}
+#buttonforGoal{
+     background-color: #4abaaf;
+    color:white;
     font-weight: 100;
-    font-size: 15px;
+    font-size: 1.02041vw;
+    height: 2.72109vw;
+    width: 4.5vw;
+    
+    margin-left: .68027vw;
 }
+#LinearProgress{
+    background: linear-gradient(to right,#4abaaf 55% , #313135 0);
+    height: .68027vw;
+    width : 20.40136vw;
+    margin-left: .9027vw;
+    margin-top: .47619vw;
+}
+#textforGoals{
+    font-size: 1.25rem;
+}
+
+
+
+
+
+/*===========HEALTH INSPECT===========*/
 .Health-Inspect{
-     height :592px;
-    width :379px;
+    height :84.5vh;
+    width :25vw;
     background-color:#172136;
     border: 2px solid,#262933;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-bottom: 50px;
+     margin-top: 4.5vh;
+    margin-left: 2vw;
+    margin-bottom: 5vh;
     padding-top: 20px;
-    padding-left: 15px;
+    padding-left: .92593vw;
     
     
 
@@ -148,41 +266,278 @@ html, body {
 #pofHI{ /*para of health inspect*/
      color: grey;
     font-weight: 100;
-    font-size: 12px;
+    font-size: 0.9rem;
 
 }
-.Restofcontent{ /*this contains all of dashboard expect of todays progress */
+.Restofcontent{ 
     display:flex;
 }
+#OutputHI{
+    height: 59vh;
+    width: 21vw;
+    margin: .68027vw;
+    margin-top: 2.04082vw;
+    background-color: #1c3142;
+    border: .06803vw solid,#1c3000;
+}
+#InspectButton{
+    background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 1.02041vw;
+    height: 2.25vw;
+    width: 4.5vw;
+    
+    margin-left: 18.68027vw;
+    font-size: .75rem;
+}
+
+
+/*============AREA TO FOCUS ON AND WEEK PROGRESS============*/
 .areaandweekly{
     display: flex;
     flex-direction: column;
 }
 .Area{ /*Area to focus on section*/
-     height :450px;
-    width :379px;
+     height :27.77778vw;
+    width :24.8vw;
     background-color:#172136;
     border: 2px solid,#262933;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-bottom: 30px;
-     padding-top: 20px;
-    padding-left: 15px;
-    
+    margin-top: 4.5vh;
+    margin-left: 2vw;
+    margin-bottom: 3vh;
+     padding-top: 0.35vw;
+    padding-left: .92593vw;
 
 }
+#textandiconofarea{
+    display:flex;
+    align-items: center;
+    padding-top: -0.68027vw;
+}
+#FlexforbasecaseArea{
+    margin-top: .68027vw;
+   display:flex;
+   align-items: center;
+}
+#textforbasecaseArea{
+    font-weight: 12.5;
+    margin-bottom: .34014vw;
+}
+#paraofbasecaseArea{
+    margin-bottom: .34014vw;
+    margin-left: 11.20408vw;
+}
+#progressforbasecaseArea{
+    background: linear-gradient(to right,#4abaaf 55% , #313135 0);
+    height: .389vw;
+    width : 20.40136vw;
+    margin-left: .9027vw;
+    margin-top: .1vw;
+}
+#bottomparaforbasecaseArea{
+    margin-top: .34014vw;
+    margin-left: .34014vw;
+}
+
+
+
+
+
 .weekprogress{
-      height :450px;
-    width :379px;
+      height :27.77778vw;
+    width :25vw;
+    background-color:#172136;
+    border: 2px solid,#262933;
+    
+    margin-left: 2vw;
+    margin-bottom: 3vh;
+     padding-top: 1.23457vw;
+    padding-left: .92593vw;
+
+}
+
+
+
+
+
+
+
+
+/*===========================
+        Calorie Counter
+  ===========================*/
+.Uploadmeapics{
+    height :24.3vw;
+    width :34vw;
     background-color:#172136;
     border: 2px solid,#262933;
     
     margin-left: 30px;
     margin-bottom: 50px;
+    margin-top: 30px;
      padding-top: 20px;
     padding-left: 15px;
 
 }
 
+.nutrition{
+     height :24.3vw;
+    width :34.01361vw;
+    background-color:#172136;
+    border: 2px solid,#262933;
+    
+    margin-left: 3.40136vw;
+    margin-bottom: 3.40136vw;
+    margin-top: 2.04082vw;
+     padding-top: 1.36054vw;
+    padding-left: 1.02041vw;
 
+
+}
+.CC{
+   display:flex;
+   align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+/*=============================
+           AI COACH
+  =============================*/
+.ai{
+     height :32.31293vw;
+    width :76.3vw;
+    background-color:#172136;
+    border: .13605vw solid,#262933;
+    
+    margin-left: 3.40136vw;
+    
+    margin-top: 2.04082vw;
+     padding-top: 1.36054vw;
+    padding-left: 1.02041vw;
+}
+
+.textandparaofAI{
+    padding-left: 2.04082vw;
+}
+
+.inputandbuttonofAI{
+     
+    border: .13605vw solid,#262933;
+    height:5.10204vw;
+    width :76.3vw;
+    background-color:#172136;
+    margin-left: 3.40136vw;
+}
+
+#textinput{
+    height: 2.38095vw;
+    width:66.02721vw;
+    background-color:#0f1624;
+    border: .13605vw solid,#262933;
+    margin-top: 1.02041vw;
+    margin-left: 1.36054vw;
+}
+#buttonofAI{
+    background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 1.02041vw;
+    height: 2.72109vw;
+    width: 5.98639vw;
+    margin-top: .68027vw;
+    margin-left: .68027vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*=================================
+              MAP
+  =================================*/
+.map{
+     height :44.21769vw;
+    width :76.3vw;
+    background-color:#172136;
+    border: .13605vw solid,#262933;
+    
+    margin-left: 3.40136vw;
+    
+    margin-top: 2.04082vw;
+     padding-top: 1.36054vw;
+    padding-left: 1.02041vw;
+}
+.mapINT{
+     height: 34.69388vw;
+    width:71.75vw;
+    background-color:#0f1624;
+    border: .13605vw solid,#262933;
+    margin-top: 2.04082vw;
+    margin-left: 1.36054vw
+}
+
+
+
+
+
+
+
+
+/*===================================
+       MANAGE REMINDERS
+  ===================================*/
+.managereminders{
+     height :35vw;
+    width :61.22449vw;
+    background-color:#172136;
+    border: .13605vw solid,#262933;
+    display:flex;
+    align-items: flex-start;
+    margin-left: 3.40136vw;
+    
+    margin-top: 2.04082vw;
+     padding-top: 1.36054vw;
+    padding-left: 1.02041vw;
+}
+#mealbutton{
+    
+    background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: .9375rem;
+    height: 2.72109vw;
+    width: 5.98639vw;
+    margin-top: 15vw;
+    margin-left: 25.5102vw;
+}
+#reminderbutton{
+     background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: .9375rem;
+    height: 2.72109vw;
+    width: 10.20408vw;
+    margin-top: 1.36054vw;
+    margin-left: 25.5102vw;
+    margin-right:2.04082vw;
+}
+.textandparaofReminders{
+    padding-left:2.04082vw;
+}
 
