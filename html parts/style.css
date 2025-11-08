@@ -64,7 +64,7 @@ html{
     position:sticky;
     border: 2px,solid,#262933;
     align-items: center  ;
-    padding-bottom: 24vw ;
+    padding-bottom: 22vw ;
     padding-right: 5.57823vw;
     gap: .68027vw;
     padding-top: 1.36054vw;
@@ -82,6 +82,9 @@ html{
 }
 #username{
     padding-left: .68027vw;
+    text-decoration: none;
+    margin-top: -0.34014vw;
+    color:white;
 }
 
 
@@ -89,7 +92,145 @@ html{
     font-weight: 100;
     text-decoration: none;
     color:white;  
+    
 }
+
+
+
+
+
+
+
+
+/*==========================================
+    USER PROFILE
+ ===========================================
+*/
+#UserDisplay{
+    
+    height: 18.02721vw;
+    background-color: #172136;
+    width: 47.61905vw;
+    margin-top: 7.80272vw;
+    margin-left: -79.01361vw;
+    border: .13605vw solid,#262933;
+    
+}
+#EditChanges{
+    height: 28.02721vw;
+    background-color: #172136;
+    width: 47.61905vw;
+    margin-top: 2.68027vw;
+    margin-left: -79.01361vw;
+    border: .13605vw solid,#262933;
+    margin-bottom: 3.40136vw;
+}
+#textforeditProfile{
+    padding-left: 1.68027vw;
+    padding-top: 1.68027vw;
+}
+
+#flexforOptionProfile{
+   display:flex;
+   
+}
+#option1Profile{
+  margin-top: 3.44218vw;
+  margin-left: 2.04082vw
+}
+
+#option2Profile{
+  margin-top: 3.44218vw;
+  margin-left: 2.04082vw
+}
+
+#option3Profile{
+  margin-top: 10.44218vw;
+  margin-left: -36.21361vw;
+}
+
+#option4Profile{
+  margin-top: 10.44218vw;
+  margin-left: 2.04082vw
+}
+.inputforProfile{
+       height: 2.38095vw;
+    width:  16.60544vw;
+    background-color:#0f1624;
+    border: .13605vw solid,#262933;
+    
+    margin-left: 0.5vw;
+    color:white;
+    padding-left: .68027vw;
+}
+.nameofoptionProfile{
+    margin-left: .68027vw;
+    margin-bottom: .68027vw;
+}
+#editbutton{
+    background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 0.94rem;
+    height: 7vh;
+    width: 8vw;
+    margin-top: 7vh;
+    margin-left: 38vw;;
+}
+#flexforUserDisplay{
+    display: flex;
+}
+#Userprofileimage{
+    margin-left: 2.04082vw;
+    margin-top: 2.04082vw;
+
+}
+#usertextandgmail{
+    margin-top: 3.40136vw;
+    margin-left: 1.36054vw;
+
+}
+#userinfo{
+    display: flex;
+}
+#UI1{
+    margin-top: 2.04082vw;
+    margin-left: 1.70068vw;
+    height: 5.40136vw;
+    width: 8.40136vw;
+    background-color: #242935;
+    color: white;
+    
+}
+#UI2{
+    margin-top: 2.04082vw;
+    margin-left: 1.70068vw;
+    height: 5.40136vw;
+    width: 8.40136vw;
+    background-color: #242935;
+    color: white;
+}
+#UI3{
+    margin-top: 2.04082vw;
+    margin-left: 1.70068vw;
+    height: 5.40136vw;
+    width: 8.40136vw;
+    background-color: #242935;
+    color: white;
+}
+#UI4{
+    margin-top: 2.04082vw;
+    margin-left: 1.70068vw;
+    height: 5.40136vw;
+    width: 8.40136vw;
+    background-color: #242935;
+    color: white;
+}
+.pofUI{
+    margin-top: .68027vw;
+    margin-left: 2.56122vw;
+}
+
 
 
 
@@ -190,7 +331,94 @@ html{
     height: 7vh;
     width: 6vw;
     margin-top: 2vh;
+
+
 }
+
+/*===========POPUP=================*/
+#popupoverlay{
+    position:fixed;
+    background: rgba(0, 0,0, 0.6);
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 100%;
+    top:0;
+    left: 0;
+}
+#popupdisplay{
+    height: 25.80272vw;
+    width: 34.01361vw;
+    background-color: #0f1624;
+    margin-left: 34.01361vw;
+    margin-top: 12.80272vw;
+    padding-left: 2.04082vw;
+    padding-top: 2.04082vw;
+    border: .13605vw solid,#262933;
+}
+#popupoption1{
+    display:flex;
+    margin-top: 2.72109vw;
+    margin-left: 3.40136vw;
+}
+#inputofpopup{
+    background-color:#0f1624 ;
+    border: .13605vw solid,#262933;
+    margin-top: -0.64014vw;
+    margin-left: .54422vw;
+    height: 3.04082vw;
+    width: 22vw;
+    padding-left: .68027vw;
+}
+#inputofpopup2{
+    background-color:#0f1624 ;
+    border: .13605vw solid,#262933;
+    margin-top: -0.64014vw;
+    margin-left: .8422vw;
+    height: 3.04082vw;
+    width: 22vw;
+    padding-left: .68027vw;
+}
+#inputofpopup3{
+    background-color:#0f1624 ;
+    border: .13605vw solid,#262933;
+    margin-top: -0.64014vw;
+    margin-left: .8422vw;
+    height: 3.04082vw;
+    width: 22vw;
+    padding-left: .68027vw;
+}
+#close{
+    height:4.40136vh;
+    width: 2.40136vw;
+    background-color: #0f1624;
+    border: .13605vw solid,#262933;
+    color:white;
+   margin-left: 9.52381vw;
+   margin-top: -1.36054vw;
+    
+}
+#flexforpopup{
+    display: flex;;
+}
+#add{
+      background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 1.02041vw;
+    height: 2.72109vw;
+    width: 6.5vw;
+    
+    margin-left: 23vw;
+    margin-top: 2.2vh;
+}
+
+
+
+
+
+
+
 #FlexforFT{
     display:flex;
     padding: .68027vw;
@@ -541,3 +769,32 @@ html{
     padding-left:2.04082vw;
 }
 
+
+
+
+
+
+/*============================================
+         Today's Workout
+  ============================================
+*/
+
+#calenderforWorkout{
+   height: 27.21088vw;
+   width: 20.80272vw;
+   background-color:#172136 ;
+   margin-left: 3.40136vw;
+   margin-top: 3.04082vw;
+
+}
+#workoutday{
+   height: 27.21088vw;
+   width: 37.80272vw;
+   background-color:#172136 ;
+   margin-left: 3.40136vw;
+   margin-top: 3.04082vw;
+}
+#flexforWorkout{
+    display: flex;
+    align-items: center;
+}
