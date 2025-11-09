@@ -14,7 +14,7 @@
         </h1>
         <nav>
             <ul id = "SMlist">
-                  <h3 class = "liele">
+                   <h3 class = "liele">
                         <div class = "flexformenuitems">
                            <div> <img src = "icons/dashboard icon.png" width = "24" height = "24"></div>
                             <div><a href = "html part.html">Dashboard</a></div>
@@ -55,7 +55,6 @@
                             <div><a href = "reminders.html"><span>Reminders</span></a></div>
                     </div>
                     </h3>
-
             </ul></nav>
         </nav>
         <a href = "profile.html">
@@ -78,7 +77,7 @@
             <div class = "flexforreminders">
             <div id = "textforreminder"><h2>Manage Reminders</h2>
             <p class = "pofD">Enable or disable notifications</p></div>
-            <div><button id = "reminderbutton" onclick="window.location.href = 'popupforreminder.html'">+ Add Reminder</button></div>
+            <div><button id = "reminderbutton">+ Add Reminder</button></div>
             </div>
 
             <div class = "optionforreminder">
@@ -96,7 +95,20 @@
                     </div>
 
 
-
+ <div id = "popupoverlay">
+        <div id  = "popupdisplayreminder">
+          <div id = "flexforpopup">
+          
+          <div><h3>Add a New Reminder</h3>
+          <p class = "pofD">Set up a new notification to stay on track.</p></div>
+          <div><button id = "close" onclick ="window.location.href='reminders.html'" >X</button></div></div>
+         
+          <div id = "popupoption1"><p>Label</p><input type = "text" id = "inputofpopup" placeholder="e.g.Take-vitamins"></div>
+          <div id = "popupoption1"><p>Time</p><input type = "text" id = "inputofpopup2" placeholder="e.g.9:30 AM"></div>
+          
+          <button id = "add" onclick ="window.location.href='reminders.html'">Save</button>
+        </div>
+      </div>
                 </div>
 
             </div>

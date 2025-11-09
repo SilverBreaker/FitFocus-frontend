@@ -63,8 +63,8 @@ html{
 #SMlist{ /*side menu lists*/
     position:sticky;
     border: 2px,solid,#262933;
-    align-items: center  ;
-    padding-bottom: 22vw ;
+    
+    padding-bottom: 14vw ;
     padding-right: 5.57823vw;
     gap: .68027vw;
     padding-top: 1.36054vw;
@@ -94,6 +94,12 @@ html{
     color:white;  
     
 }
+.flexformenuitems{
+   display:flex;
+  margin-bottom: 1.36054vw;
+   
+}
+
 
 
 
@@ -369,6 +375,7 @@ html{
     height: 3.04082vw;
     width: 22vw;
     padding-left: .68027vw;
+    color: white;
 }
 #inputofpopup2{
     background-color:#0f1624 ;
@@ -378,6 +385,7 @@ html{
     height: 3.04082vw;
     width: 22vw;
     padding-left: .68027vw;
+    color: white;
 }
 #inputofpopup3{
     background-color:#0f1624 ;
@@ -387,6 +395,7 @@ html{
     height: 3.04082vw;
     width: 22vw;
     padding-left: .68027vw;
+    color:white;
 }
 #close{
     height:4.40136vh;
@@ -595,6 +604,17 @@ html{
 /*===========================
         Calorie Counter
   ===========================*/
+#mealbutton{
+    
+    background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: .9375rem;
+    height: 2.72109vw;
+    width: 5.98639vw;
+    margin-top: 15vw;
+    margin-left: 25.5102vw;
+}
 .Uploadmeapics{
     height :24.3vw;
     width :34vw;
@@ -701,23 +721,29 @@ html{
   =================================*/
 .map{
      height :44.21769vw;
-    width :76.3vw;
+    width :65.3vw;
     background-color:#172136;
     border: .13605vw solid,#262933;
     
     margin-left: 3.40136vw;
-    
+    margin-bottom: 3.40136vw;
     margin-top: 2.04082vw;
      padding-top: 1.36054vw;
     padding-left: 1.02041vw;
 }
 .mapINT{
      height: 34.69388vw;
-    width:71.75vw;
+    width:55.75vw;
     background-color:#0f1624;
     border: .13605vw solid,#262933;
     margin-top: 2.04082vw;
-    margin-left: 1.36054vw
+    margin-left: 1.36054vw;
+    padding-top: .98027vw;
+    padding-left: 1.06054vw;
+
+}
+#tempmap{
+    filter: brightness(50%);
 }
 
 
@@ -732,28 +758,17 @@ html{
   ===================================*/
 .managereminders{
      height :35vw;
-    width :61.22449vw;
+    width :44vw;
     background-color:#172136;
     border: .13605vw solid,#262933;
-    display:flex;
-    align-items: flex-start;
+    
+  
     margin-left: 3.40136vw;
     
     margin-top: 2.04082vw;
-     padding-top: 1.36054vw;
-    padding-left: 1.02041vw;
-}
-#mealbutton{
     
-    background-color: #4abaaf;
-    color:white;
-    font-weight: 100;
-    font-size: .9375rem;
-    height: 2.72109vw;
-    width: 5.98639vw;
-    margin-top: 15vw;
-    margin-left: 25.5102vw;
 }
+
 #reminderbutton{
      background-color: #4abaaf;
     color:white;
@@ -761,12 +776,45 @@ html{
     font-size: .9375rem;
     height: 2.72109vw;
     width: 10.20408vw;
-    margin-top: 1.36054vw;
-    margin-left: 25.5102vw;
-    margin-right:2.04082vw;
+    margin-top: 1.25vw;
+    margin-left: 13.5102vw;
+   
 }
-.textandparaofReminders{
-    padding-left:2.04082vw;
+.flexforreminders{
+    display: flex;
+   
+}
+#textforreminder{
+    margin-left: 2.5vw;
+    margin-top: 1.225vw;
+}
+.optionforreminder{
+    height: 5.40816vw;
+    width: 34.01361vw;
+    background-color: #242935;
+    margin-top: 2.36054vw;
+    margin-left: 4.36054vw;
+}
+.optionmargin{
+    margin-top: .81633vw;
+}
+#textforoptionreminder{
+    margin-top: 1vw;
+    margin-left: 0.8vw;
+}
+#deleteoption{
+    margin-left: 20vw;
+    margin-top: 1.2vw;
+}
+#popupdisplayreminder{
+    height: 20.80272vw;
+    width: 34.01361vw;
+    background-color: #0f1624;
+    margin-left: 34.01361vw;
+    margin-top: 12.80272vw;
+    padding-left: 2.04082vw;
+    padding-top: 2.04082vw;
+    border: .13605vw solid,#262933;
 }
 
 
@@ -785,6 +833,7 @@ html{
    background-color:#172136 ;
    margin-left: 3.40136vw;
    margin-top: 3.04082vw;
+     border: .13605vw solid,#262933;
 
 }
 #workoutday{
@@ -793,8 +842,104 @@ html{
    background-color:#172136 ;
    margin-left: 3.40136vw;
    margin-top: 3.04082vw;
+     border: .13605vw solid,#262933;
 }
-#flexforWorkout{
+.flexforWorkout{
     display: flex;
     align-items: center;
+}
+#textandparaofworkout{
+    margin-top: 1.36054vw;
+    margin-left: 1.70068vw
+}
+#buttonofworkout{
+     background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 1.02041vw;
+    height: 2.72109vw;
+    width: 8.98639vw;
+    margin-top: .68027vw;
+    margin-left: 16.68027vw;
+}
+
+#bodyofworkout{
+    margin-top: 5.36054vw;
+    margin-left:6.40136vw
+}
+#h3ofworkout{
+    margin-left: 5.44218vw;
+}
+
+
+
+
+/*=======================================================
+      LOGIN AND SIGNUP
+  ======================================================
+*/
+.bodyoflogin{
+    background-color: #0f1624;
+}
+#loginblock{
+     height: 30.80272vw;
+    width: 28.01361vw;
+    background-color: #172136;
+    margin-left: 36.01361vw;
+    margin-top: 8.80272vw;
+    padding-left: 2.04082vw;
+    padding-top: 2.04082vw;
+    border: .13605vw solid,#262933;
+     
+}
+#h2oflogin{
+    margin-left: 5.36054vw;
+}
+#poflogin{
+    margin-left: .68027vw
+}
+#imgoflogin{
+    margin-left: 8.20272vw;
+}
+#inputoflogin{
+     padding-left: .34014vw;
+    border: .13605vw solid,#262933;
+    height:2.50204vw;
+    width :24.3vw;
+    background-color:#0f1624;
+    margin-top: .68027vw;
+}
+.poflogin{
+    margin-top: 1.36054vw;
+}
+#buttonoflogin{
+      background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 1.02041vw;
+    height: 2.72109vw;
+    width: 24.3vw;
+    margin-top: 2.68027vw;
+    
+}
+#noaccountmargin{
+    margin-left: 4.7619vw;
+    margin-top: .68027vw;
+}
+#nodecor{
+   
+    color:white;
+}
+#signupblock{
+     height: 35.80272vw;
+    width: 28.01361vw;
+    background-color: #172136;
+    margin-left: 36.01361vw;
+    margin-top: 6.80272vw;
+    padding-left: 2.04082vw;
+    padding-top: 2.04082vw;
+    border: .13605vw solid,#262933;
+}
+#pofsignup{
+    margin-left: 3.06122vw
 }

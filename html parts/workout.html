@@ -14,33 +14,48 @@
             </h1>
             <nav>
             <ul id = "SMlist">
-                <h2 class = "liele">
-                    <img src = "icons/dashboard icon.png" width = "24" height = "24">
-                    <a href = "html part.html">Dashboard</a>
-                </h2>
-                <h2 class = "liele">
-                    <img src = "icons/workout icon.png" width = "24" height = "24">
-                    <a href = "workout.html">Today's Workout</a>
+                   <h3 class = "liele">
+                        <div class = "flexformenuitems">
+                           <div> <img src = "icons/dashboard icon.png" width = "24" height = "24"></div>
+                            <div><a href = "html part.html">Dashboard</a></div>
+                        </div>
+                    </h3>
 
-                </h2>
-                <h2 class = "liele">
-                  <img src = "icons/calorie counter.png" width = "24" height = "24">
-                  <a href = "caloriecounter.html"><span>Calorie Counter</span></a>
+                    <h3 class= "liele">
+                        <div class = "flexformenuitems">
+                           <div><img src = "icons/workout icon.png" width = "24" height = "24"></div>
+                            <div> <a href = "workout.html">Today's Workout</a></div>
+                        </div>
+                    </h3>
+                    
+                    <h3 class = "liele">
+                        <div class = "flexformenuitems">
+                           <div> <img src = "icons/calorie counter.png" width = "24" height = "24"></div>
+                            <div><a href = "caloriecounter.html"><span>Calorie Counter</span></a></div>
+                        </div>
+                   </h3>
 
-                </h2>
-                <h2 class = "liele">
-                    <img src = "icons/ai coach icon.png" width = "24" height = "24">
-                    <a href = "ai coach.html">Ai Coach</a>
-                </h2>
-                <h2 class = "liele">
-                    <img src = "icons/map.png" width = "24" height = "24">
-                    <a href = "map.html">map</a>
-                </h2>
+                    <h3 class = "liele">
+                        <div class = "flexformenuitems">
+                        <div><img src = "icons/ai coach icon.png" width = "24" height = "24"></div>
+                        <div> <a href = "ai coach.html">AI Coach</a></div>
+                        </div>
+                    </h3>
 
-                <h2 class = "liele">
-                    <img src = "icons/map.png" width = "24" height = "24">
-                    <a href = "reminders.html"><span>Reminders</span></a>
-                </h2>
+                    <h3 class = "liele">
+                        <div class = "flexformenuitems">
+                        <div><img src = "icons/map.png" width = "24" height = "24"></div>
+                        <div> <a href = "map.html">map</a></div>
+                        </div>
+                    </h3>
+
+                    <h3 class = "liele">
+                        <div class = "flexformenuitems">
+                            <div><img src = "icons/reminder.png" width = "24" height = "26"></div>
+                            <div><a href = "reminders.html"><span>Reminders</span></a></div>
+                    </div>
+                    </h3>
+                
             </ul>
           </nav>
           <a href = "profile.html">
@@ -58,13 +73,27 @@
       <main>
           <h1 class = "TopBar"> Workout</h1>
           
-          <div id = "flexforWorkout">
+          <div class = "flexforWorkout">
           <div id = "calenderforWorkout">
              
           </div>
           <div id = "workoutday">
+               <div class = "flexforWorkout">
+                 <div id = "textandparaofworkout">
+                    <h2>Rest Day</h2>
+                    <p class = "pofD">November 9th, 2025</p>
+                 </div>
+                 <div >
+                    <button id = "buttonofworkout">+ Add Exercise</button>
+                 </div>
 
-          </div></div>
+                </div>
+                <div id = "bodyofworkout">
+                       <h3 id = "h3ofworkout">it's a Rest Day!</h3>
+                       <p class = "pofD">Relax, recover, and get ready for your next workout.</p>
+                 </div>
+          </div>
+        </div>
       </main>
     </body>
 </html>
