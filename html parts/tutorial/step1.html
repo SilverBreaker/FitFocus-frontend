@@ -3,64 +3,65 @@
    <head>
       <meta charset = UTF-8>
       <title>FitFocus</title>
-      <link rel = "stylesheet" href = "style.css">
+      <link rel = "stylesheet" href = "../style.css">
    </head>
    <body>
     <!--sidebar-->
     <aside class = "SideMenu">
         <h1 id = "FitfocusSM">
-            <img src = "icons/fitfocus dumbell.png" width = "60" height = "60">
+            <img src = "../icons/fitfocus dumbell.png" width = "60" height = "60">
             <span>FitFocus</span>
         </h1>
         <nav>
             <ul id = "SMlist">
-                  <h3 class = "liele">
+                 <h3 class = "liele">
                         <div class = "flexformenuitems">
-                           <div> <img src = "icons/dashboard icon.png" width = "24" height = "24"></div>
+                           <div> <img src = "../icons/dashboard icon.png" width = "24" height = "24"></div>
                             <div><a href = "html part.html">Dashboard</a></div>
                         </div>
                     </h3>
 
                     <h3 class= "liele">
                         <div class = "flexformenuitems">
-                           <div><img src = "icons/workout icon.png" width = "24" height = "24"></div>
+                           <div><img src = "../icons/workout icon.png" width = "24" height = "24"></div>
                             <div> <a href = "workout.html">Today's Workout</a></div>
                         </div>
                     </h3>
                     
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
-                           <div> <img src = "icons/calorie counter.png" width = "24" height = "24"></div>
+                           <div> <img src = "../icons/calorie counter.png" width = "24" height = "24"></div>
                             <div><a href = "caloriecounter.html"><span>Calorie Counter</span></a></div>
                         </div>
                    </h3>
 
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
-                        <div><img src = "icons/ai coach icon.png" width = "24" height = "24"></div>
+                        <div><img src = "../icons/ai coach icon.png" width = "24" height = "24"></div>
                         <div> <a href = "ai coach.html">AI Coach</a></div>
                         </div>
                     </h3>
 
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
-                        <div><img src = "icons/map.png" width = "24" height = "24"></div>
+                        <div><img src = "../icons/map.png" width = "24" height = "24"></div>
                         <div> <a href = "map.html">map</a></div>
                         </div>
                     </h3>
 
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
-                            <div><img src = "icons/reminder.png" width = "24" height = "26"></div>
+                            <div><img src = "../icons/reminder.png" width = "24" height = "26"></div>
                             <div><a href = "reminders.html"><span>Reminders</span></a></div>
                     </div>
                     </h3>
+
             </ul></nav>
           <a href = "profile.html">
           <section id = "User">
       
               <div>
-                <img src = "icons/user.jpg" height = "45" width="45">
+                <img src = "../icons/user.jpg" height = "45" width="45">
               </div>
               <div id = "username">
                 <h2>Silver</h2>
@@ -80,7 +81,7 @@
           <div class = "filledprogress">
             <div class = "progresstext">
               <!--Temporary Text-->
-              <h2> 0%</h2>
+              <h2>68%</h2>
               <p id = "pofTP">Overall</p>
             </div>
           </div>
@@ -88,18 +89,24 @@
       </section>
       
       <div class = "Restofcontent">
+      
 
+      <div id = "popupoverlay">
+        <div id  = "popupdisplayforstep1">
+          
+        </div>
+      </div>
 
       <!--Fitness Tracker-->
       <section class = "Fitness-tracker" >
         <div id = "FlexforFT">
         <div id = "padaddFT"><h2>Fitness Tracker</h2><p class = "pofD">Log your daily progress for your fitness habits</p></div>
-        <div > <button id = "buttonofFT" onclick= "window.location.href='popup.html'">add habit</button></div>
+        <div > <button id = "buttonofFT">add habit</button></div>
         </div>
 
         <div class = "basecaseofFT">
           <div id = "flexforFTSgoals">
-            <div><img src = "icons/fitness tracker icon/pushup.png" height ="60" width="60"></div>
+            <div><img src = "../icons/fitness tracker icon/pushup.png" height ="60" width="60"></div>
             <div><h2 id = "textforGoals">Push-Ups</h2></div><div id ="goalquantity"><p class = "pofD">Goal: 50reps</p></div>
           </div>
           

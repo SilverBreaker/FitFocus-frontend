@@ -40,8 +40,8 @@ html{
     
     background-color: #0f1624;
     
-    height:100vh;
     
+    height: 100vh;
     
     position:sticky
        
@@ -64,7 +64,7 @@ html{
     position:sticky;
     border: 2px,solid,#262933;
     
-    padding-bottom: 14vw ;
+    padding-bottom: 14.75vw ;
     padding-right: 5.57823vw;
     gap: .68027vw;
     padding-top: 1.36054vw;
@@ -236,6 +236,16 @@ html{
     margin-top: .68027vw;
     margin-left: 2.56122vw;
 }
+#buttonforlogout{
+     background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 0.94rem;
+    height: 7vh;
+    width: 6vw;
+    margin-top: 8vh;
+    margin-left: 16.5vw;
+}
 
 
 
@@ -279,7 +289,7 @@ html{
     font-weight: 100;
 }
 .progressempty{
-   background: conic-gradient(#4abaaf 55%, #313135 0 );
+   background: conic-gradient(#4abaaf 0, #313135 0 );
    height : 15vw;
    width: 15vw;
    border-radius: 50%;
@@ -879,17 +889,40 @@ html{
   ======================================================
 */
 .bodyoflogin{
-    background-color: #0f1624;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(140deg, #34c0b7 50%, #1e293b 50%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+
+
+
+}
+#hoffitfocus{
+    font-size:6rem;
+    margin-top: -1vw;
+    margin-left: 12vw;
+}
+#poffitfocus{
+    margin-left: 17vw;
+    font-size: 1.25rem;
+}
+#imgofloginpage{
+    margin-top: 6vw;
+    margin-left: 15vw;
 }
 #loginblock{
      height: 30.80272vw;
     width: 28.01361vw;
     background-color: #172136;
-    margin-left: 36.01361vw;
+    margin-left: 18.01361vw;
     margin-top: 8.80272vw;
     padding-left: 2.04082vw;
     padding-top: 2.04082vw;
     border: .13605vw solid,#262933;
+    
      
 }
 #h2oflogin{
@@ -934,11 +967,12 @@ html{
      height: 35.80272vw;
     width: 28.01361vw;
     background-color: #172136;
-    margin-left: 36.01361vw;
+    margin-left: 18.01361vw;
     margin-top: 6.80272vw;
     padding-left: 2.04082vw;
     padding-top: 2.04082vw;
     border: .13605vw solid,#262933;
+    
 }
 #pofsignup{
     margin-left: 3.06122vw

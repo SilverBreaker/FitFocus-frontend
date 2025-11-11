@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body{
+    display :flex;
+    background-color:#0f1624 ;
+    font-family: "PT Sans", sans-serif;
+    font-style: normal;
+    color: white;
+    margin:0px;
+    padding:0px;
+    overflow-x: hidden;
+
+    
+  
+    
+    
+    
+}
+
+html{
+    scroll-behavior:smooth;
+}
+*{
+      margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}    
+
+
+
+/*=================TOPBAR==========================*/
+
+#topbaroflanding{
+    background-color:#0f1624 ;
+    display: flex;
+    align-items: center;
+    padding: .68027vw;
+    height: 10vh;
+    top:0%;
+    border: .13605vw solid,#262933;
+    position: sticky;
+    width: 100vw;
+    z-index: 1000;
+}
+#loginoflanding{
+    position: sticky;
+     background-color: #72e2d6;
+    color:black;
+    font-weight: 100;
+    top:0%;
+    
+    height: 4vh;
+    width: 4vw;
+    margin-top: 0.5vh;
+    margin-left: 83vw;
+    z-index: 1000;
+}
+#registeroflanding{
+    position: sticky;
+     background-color: #74ebcd;
+    color:black;
+    font-weight: 100;
+    top:0%;
+    height: 4vh;
+    width: 4vw;
+    margin-top: 0.5vh;
+    margin-left: 1vw;
+    z-index: 1000;
+}
+
+
+
+/*========================IMGANDINFO======================*/
+#imgandinfo{
+    position: relative;
+    z-index: 1;
+}
+#imgdim{
+     filter: brightness(50%)
+}
+#textandparainfoofimg{
+    margin-top: -20vw;
+    position:absolute;
+    margin-left: 4vw;
+    z-index: 1;
+}
+#headingoflanding{
+  font-size: 4rem;
+  z-index: 1;
+}
+
+
+
+/*================FEATURES===================================*/
+#features{
+    background-color:#242935 ;
+    height: 40.4vw;
+}
+#headingforfeature{
+    padding-top: 10vw;
+    font-size: 3rem;
+    padding-left: 32vw;
+}
+#paraforfeature{
+    color: grey;
+    padding-left: 30vw;
+    font-size: 1.375rem;
+}
+#ui1offeature{
+    height: 35.40816vh;
+    width: 17.48299vw;
+    background-color:#0f1624 ;
+    margin-left: 5.44218vw;
+    margin-top: 4.08163vw;
+}
+#ui2offeature{
+    height: 35.40816vh;
+    width: 17.48299vw;
+    background-color:#0f1624 ;
+    margin-left: 5.44218vw;
+    margin-top: 4.08163vw;
+}
+#ui3offeature{
+    height: 35.40816vh;
+    width: 17.48299vw;
+    background-color:#0f1624 ;
+    margin-left: 5.44218vw;
+    margin-top: 4.08163vw;
+}
+#ui4offeature{
+    height: 35.40816vh;
+    width: 17.48299vw;
+    background-color:#0f1624 ;
+    margin-left: 5.44218vw;
+    margin-top: 4.08163vw;
+}
+#flexforfeatures{
+    display: flex;
+    flex-direction: row;
+
+}
