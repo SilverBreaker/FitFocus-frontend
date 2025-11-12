@@ -12,8 +12,8 @@
                 <img src = "icons/fitfocus dumbell.png" height = "30" width="30">
                 <h3>FitFocus</h3>
 
-                <button id = "loginoflanding">Login</button>
-                <button id = "registeroflanding">Register</button>
+                <button id = "loginoflanding" onclick = "window.location.href  = 'login.html'">Login</button>
+                <button id = "registeroflanding" onclick="window.location.href = 'signup.html'">Register</button>
             </div>
             <div id = "imgandinfo">
                
@@ -29,22 +29,76 @@
                 
                 <div id = "flexforfeatures">
                 <div id = "ui1offeature">
-                      <h3>Calorie & Macro Counter</h3>
-                      <p>Effortlessly track your meals by taking a photo. Our AI analyzes your food and gives you a detailed nutritional breakdown.</p>
+                     <img src = "icons/u1 img.png" id= "imgoffeature" height = "40" width = "40">
+                      <h3 id = "h3ofui">Calorie & Macro Counter</h3>
+                      <p id = "ui1para">Effortlessly track your meals by taking a photo. Our AI analyzes your food and gives you a detailed nutritional breakdown.</p>
                 </div>
                 <div id = "ui2offeature">
-                      <h3>Calorie & Macro Counter</h3>
-                      <p>Effortlessly track your meals by taking a photo. Our AI analyzes your food and gives you a detailed nutritional breakdown.</p>
+                      <img src = "icons/u2 img.png" id = "img2offeature" height = "35" width = "50">
+                      <h3 id = "h3ofui2">AI Fitness Coach</h3>
+                      <p id = "ui2para">Get personalized workout advice, ask fitness questions, and stay motivated with your 24/7 AI-powered fitness companion.</p>
                 </div>
                 <div id = "ui3offeature">
-                      <h3>Calorie & Macro Counter</h3>
-                      <p>Effortlessly track your meals by taking a photo. Our AI analyzes your food and gives you a detailed nutritional breakdown.</p>
+                      <IMG SRC = "icons/u3img.png" id = "img3offeature" height = "35" width = "50">
+                      <h3 id = "h3ofui3">Track Your Progress</h3>
+                      <p id = "ui3para">Monitor your journey with beautiful charts and graphs. See how far you’ve come and stay focused on your goals</p>
                 </div>
                 <div id = "ui4offeature">
-                      <h3>Calorie & Macro Counter</h3>
-                      <p>Effortlessly track your meals by taking a photo. Our AI analyzes your food and gives you a detailed nutritional breakdown.</p>
+                     <img src = "icons/ui4img.png" id = "img4offeature" height = "40" width = "50">
+                      <h3 id = "h3ofui4">Personalized Workouts</h3>
+                      <p id = "ui4para">Receive workout plans tailored to your goals, whether you want to build muscle, lose weight, or improve your overall fitness.</p>
                 </div>
                 </div>
+
+            </div>
+
+
+            <div id = "subscriptionplans">
+                <h1 id = "headerofplans">Find the Plan That's Right for You</h1>
+                <p id = "paraofplans">Whether you're just starting out or a seasoned pro, we have a plan for you.</p> 
+                <div id = "flexforplans">
+                     <div id = "free">
+                           <h2 id = "freeheader">Free</h2>
+                           <p id = "paraoffree">Get started with the basics and see what FitFocus can do for you.</p>
+
+                           <p id = "paraofpricefree"><strong id = "zerostrong">$0</strong>/month</p>
+                           <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Basic workout tracking</p></div>
+                           <div class  = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Manual calorie logging</p></div>
+                            <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Community access</p></div>
+                            <button id = "freebutton">Start for Free</button>
+                        </div>
+                     <div id = "paid">
+                        <h2 id = "freeheader">Pro</h2>
+                           <p id = "paraoffree">Unlock the full power of AI for your fitness journey.</p>
+
+                           <p id = "paraofpricefree"><strong id = "paidstrong">$5.99</strong>/month</p>
+                           <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Everything in Free, plus:</p></div>
+                           <div class  = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">AI Calorie Counter with image recognition</p></div>
+                            <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">AI Fitness Coach chat</p></div>
+                            <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Personalized workout plans</p></div>
+                            <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Advanced progress analytics</p></div>
+                            <button id = "paidbutton">Upgrade to Pro</button>
+
+                     </div>
+                     <div id = "team">
+                              <h2 id = "freeheader">Team</h2>
+                           <p id = "paraoffree">Perfect for personal trainers, gyms, and corporate wellness.</p>
+
+                           <p id = "paraofpricefree"><strong id = "teamstrong">Contact Us</strong></p>
+                           <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Everything in Pro, plus:</p></div>
+                           <div class  = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Multi-user management</p></div>
+                            <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Client progress dashboards</p></div>
+                            <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Custom branding</p></div>
+                            <div class = "benefitsoffree"><img src = "icons/checkmark.png" height = "20" width = "20"><p id = "paraoff">Dedicated support</p></div>
+                            <button id = "freebutton">Contact Sales</button>
+                     </div>
+
+                </div> 
+            </div>
+            <div id = "rightsreserved">
+                <p class ="paraofrights">© 2025 FitFocus. All rights reserved.</p>
+                <a href = "termsofservive.html"><p id = "termsofservice">Terms of Service</p></a>
+                <a href = "policy.html"><p id = "privacy">Privacy</p></a>
             </div>
         </main>
     </body>

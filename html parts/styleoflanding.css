@@ -54,6 +54,9 @@ html{
     margin-left: 83vw;
     z-index: 1000;
 }
+#loginoflanding:hover{
+   transform: scale(1.02);
+}
 #registeroflanding{
     position: sticky;
      background-color: #74ebcd;
@@ -65,6 +68,9 @@ html{
     margin-top: 0.5vh;
     margin-left: 1vw;
     z-index: 1000;
+}
+#registeroflanding:hover{
+    transform: scale(1.02);
 }
 
 
@@ -78,14 +84,28 @@ html{
      filter: brightness(50%)
 }
 #textandparainfoofimg{
-    margin-top: -20vw;
+    margin-top: -25vw;
     position:absolute;
     margin-left: 4vw;
     z-index: 1;
+    opacity: 0;
+  
+    animation: fadder 1.2s ease-out forwards;
+}
+@keyframes fadder{
+    from{
+        opacity: 0;
+        transform: translateY(2.72109vw);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0)
+    }
 }
 #headingoflanding{
   font-size: 4rem;
   z-index: 1;
+  
 }
 
 
@@ -108,28 +128,30 @@ html{
 #ui1offeature{
     height: 35.40816vh;
     width: 17.48299vw;
-    background-color:#0f1624 ;
+    background-color:#172136 ;
     margin-left: 5.44218vw;
     margin-top: 4.08163vw;
+    padding-top: 1.36054vh;
+    padding-left: .68027vw;
 }
 #ui2offeature{
     height: 35.40816vh;
     width: 17.48299vw;
-    background-color:#0f1624 ;
+    background-color:#172136 ;
     margin-left: 5.44218vw;
     margin-top: 4.08163vw;
 }
 #ui3offeature{
     height: 35.40816vh;
     width: 17.48299vw;
-    background-color:#0f1624 ;
+    background-color:#172136 ;
     margin-left: 5.44218vw;
     margin-top: 4.08163vw;
 }
 #ui4offeature{
     height: 35.40816vh;
     width: 17.48299vw;
-    background-color:#0f1624 ;
+    background-color:#172136 ;
     margin-left: 5.44218vw;
     margin-top: 4.08163vw;
 }
@@ -137,4 +159,252 @@ html{
     display: flex;
     flex-direction: row;
 
+}
+#imgoffeature{
+    margin-left: 5.68027vw;
+    margin-top: 4vh;
+}
+#img2offeature{
+    margin-left: 6.68027vw;
+    margin-top: 4vh;
+}
+
+#img3offeature{
+    margin-left: 6.68027vw;
+    margin-top: 4vh;
+}
+#img4offeature{
+    margin-left: 6.68027vw;
+    margin-top: 4vh;
+}
+#h3ofui{
+   margin-left: .34014vw;
+}
+#ui1para{
+    color: gray;
+    margin-left: .34014vw;
+    margin-top: .68027vw;
+}
+#h3ofui2{
+     margin-left: 3.94014vw;
+     margin-top: 0.75vw;
+}
+#ui2para{
+    color: gray;
+     margin-left: 1.64014vw;
+    margin-top: 1.027vw;
+    margin-right: 1.2vw;
+}
+
+#h3ofui3{
+     margin-left: 3.44014vw;
+     margin-top:0.75vw;
+}
+#ui3para{
+    color: gray;
+    margin-left: 1.64014vw;
+    margin-top: 1.027vw;
+    margin-right: 1.2vw;
+}
+
+#h3ofui4{
+     margin-left: 2.8014vw;
+     margin-top: .75vw;
+}
+#ui4para{
+    color: gray;
+    margin-left: 1.64014vw;
+    margin-top: .68027vw
+    ;
+}
+
+/*=============================SUBSCRIPTIONS=======================*/
+#subscriptionplans{
+    height : 65.01361vw;
+    width: 100.02721vw;
+    background-color: #172136;
+    
+}
+
+#headerofplans{
+    margin-left: 27vw;
+    font-size: 3rem;
+    padding-top: 12vw;
+}
+#paraofplans{
+    margin-left: 25vw;
+    font-size: 1.5rem;
+    color: grey;
+
+}
+
+
+#free{
+    height: 25vw;
+    width: 21vw;
+    margin-top: 2.78027vw;
+    margin-left:15.72109vw;
+    background-color: #1f2c47;
+    border: .13605vw solid,#262933;
+}
+#free:hover{
+    transform: scale(1.04);
+}
+.benefitsoffree{
+    display: flex;
+    align-items: center;
+    margin-left: 2.68027vw;
+}
+#freeheader{
+    margin-top: 1.66054vw;
+    margin-left: 7.84082vw;
+    margin-bottom: .34014vw;
+}
+#freebutton{
+     background-color: #172136;
+    color:white;
+     border: .13605vw solid,#262933;
+    font-size: 0.94rem;
+    height: 7vh;
+    width: 15vw;
+    margin-top: 4vh;
+    margin-left: 2vw;
+}
+#freebutton:hover{
+    transform: scale(1.02);
+}
+#paraoffree{
+    color: grey;
+    margin-left: 1.64082vw;
+    margin-right: 1.6vw;
+
+    margin-bottom: 2.04082vw;
+}
+#paraofpricefree{
+    margin-left: 6.84082vw;
+    color: grey;
+    margin-bottom: 2.04082vw;
+
+}
+#zerostrong{
+    color: white;
+    font-size: 2rem;
+}
+#paraoff{
+    color: grey;
+    margin-left: .34014vw;
+    margin-bottom: .34014vw;
+}
+#flexforplans{
+    display: flex;
+    align-items: center;
+}
+#paid{
+    height: 65vh;
+    width: 20vw;
+    background-color: #1f2c47;
+    border: .13605vw solid,#4abaaf;
+    margin-left: 2vw;
+    margin-top: 15vh;
+}
+#paid:hover{
+    transform: scale(1.04);
+}
+
+#team{
+     height: 63vh;
+    width: 20vw;
+    background-color: #1f2c47;
+    border: .13605vw solid,#262933;
+    margin-left: 2vw;
+    margin-top: 13vh;
+}
+#team:hover{
+    transform: scale(1.04);
+}
+#paidbutton{
+     background-color: #4abaaf;
+    color:white;
+     border: .13605vw solid,#262933;
+    font-size: 0.94rem;
+    height: 7vh;
+    width: 15vw;
+    margin-top: 4vh;
+    margin-left: 2vw;
+}
+#paidbutton:hover{
+    transform: scale(1.02);
+}
+#paidstrong{
+    color: white;
+    font-size: 2rem;
+    margin-left: -1.68027vw;
+}
+#teamstrong{
+    color: white;
+    font-size: 2rem;
+    margin-left: -1.68027vw; 
+}
+
+#rightsreserved{
+    height:10vh;
+    width: 100vw;
+    display: flex;
+    background-color:#242935;
+    padding: 1.86054vw;
+}
+.paraofrights{
+    color:grey;
+}
+#termsofservice{
+    text-decoration: none;
+    color:grey;
+    margin-left: 65vw;
+    font-weight: 100;
+}
+#privacy{
+    text-decoration: none;
+    color:grey;
+    margin-left: 2vw;
+    font-weight: 100;
+}
+
+
+/*========================TERMS OF SERVICE=======================*/
+
+#backtohome{
+     background-color:      #172136;
+;
+    color:white;
+     border: .13605vw solid,#262933;
+    font-size: 0.94rem;
+    height: 7vh;
+    width: 15vw;
+    margin-top: 4vh;
+    margin-left: 2vw;
+}
+#info{
+     border: .13605vw solid,#262933;
+    height: 180vh;
+    width: 90vw;
+    background-color: #1f2c47;
+    margin-left: 5vw;
+    padding: 3.68027vw;
+    margin-top: 2.68027vw;
+    margin-bottom: 10vw;;
+}
+#bodyofterm{
+    background-color: #172136;
+}
+.headofterm{
+    padding-top: -2.68027vw;
+    margin-bottom: 1.36vw;
+}
+.paraofterm{
+    color:grey;
+    margin-bottom: 1.36054vw;
+}
+.paraofterm1{
+    
+    margin-bottom: 1.36054vw;
 }
