@@ -11,10 +11,14 @@ body{
     
     
   
-    
-    
-    
+ 
+
 }
+
+    
+    
+    
+
 
 html{
     scroll-behavior:smooth;
@@ -39,14 +43,19 @@ html{
     left:0px;
     
     background-color: #0f1624;
-    
-    
+    /*transform: translateX(-6.80272vw);
+    opacity: 0;*/
     height: 100vh;
     
-    position:sticky
+    position:sticky;
+    backdrop-filter: blur(7.14286vw);
+
+border: 1px solid rgba(255, 255, 255, 0.2);
+
        
     
 }
+
 #FitfocusSM{  /* sidemenu heading*/
    position:sticky ;
     
@@ -71,6 +80,35 @@ html{
     font-size: .75rem;
     left:0px;
 }
+/* =============TO ADD Collapsable side menu==================
+.SideMenu:hover{
+    animation: uncollapse 0.5s ease-out forwards;
+}
+.SideMenu:not(:hover){
+    animation: collap 4.5s ease-in forwards;
+    
+}
+@keyframes uncollapse{
+    from{
+        transform: translateX(-6.80272vw);
+    opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+    opacity: 1;
+    }
+}
+@keyframes collap{
+      from{
+        transform: translateX(0);
+    opacity: 1;
+    }
+    to{
+        transform: translateX(-6.80272);
+    opacity: 0;
+    }
+}
+    */
 #User{
   border: 2px,solid,#262933;
   height: 5.10204vw;
@@ -86,6 +124,9 @@ html{
     margin-top: -0.34014vw;
     color:white;
 }
+#username:hover{
+    transform: scale(1.012);
+}
 
 
 .liele a{ 
@@ -93,6 +134,10 @@ html{
     text-decoration: none;
     color:white;  
     
+}
+.liele:hover{
+    font-weight: 120;
+    transform: scale(1.012);
 }
 .flexformenuitems{
    display:flex;
@@ -275,13 +320,13 @@ html{
 
 /*=========TODAYS PROGRESS===========*/
 .Todayprogress{
-   width:77.41vw;
+   width:55.41vw;
    height: 55vh;
    background-color: #172136;
    border:2px solid,#262933;
    margin-left: 4vh;
    margin-top: 5vh;
-   padding-left: 33vw;
+   padding-left: 23vw;
    padding-top: 4vh;
 }
 .pofD{ /* para of dashboard*/
@@ -350,7 +395,9 @@ html{
 
 
 }
-
+#buttonofFT:hover{
+    transform: scale(1.012);
+}
 /*===========POPUP=================*/
 #popupoverlay{
     position:fixed;
@@ -371,6 +418,17 @@ html{
     padding-left: 2.04082vw;
     padding-top: 2.04082vw;
     border: .13605vw solid,#262933;
+    animation: fromtop 0.35s ease-out forwards;
+}
+@keyframes fromtop{
+    from{
+        opacity: 0;
+        transform: translateY(-1.36054vw);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 #popupoption1{
     display:flex;
@@ -431,6 +489,9 @@ html{
     margin-left: 23vw;
     margin-top: 2.2vh;
 }
+#add:hover{
+    transform: scale(1.012);
+}
 
 
 
@@ -480,6 +541,9 @@ html{
     
     margin-left: .68027vw;
 }
+#buttonforGoal:hover{
+    transform: scale(1.012);
+}
 #LinearProgress{
     background: linear-gradient(to right,#4abaaf 55% , #313135 0);
     height: .68027vw;
@@ -497,12 +561,12 @@ html{
 
 /*===========HEALTH INSPECT===========*/
 .Health-Inspect{
-    height :84.5vh;
-    width :25vw;
+    height :54.8vh;
+    width :22vw;
     background-color:#172136;
     border: 2px solid,#262933;
-     margin-top: 4.5vh;
-    margin-left: 2vw;
+     margin-top: -55vh;
+    margin-left: 33vw;
     margin-bottom: 5vh;
     padding-top: 20px;
     padding-left: .92593vw;
@@ -520,9 +584,10 @@ html{
     display:flex;
 }
 #OutputHI{
-    height: 59vh;
-    width: 21vw;
-    margin: .68027vw;
+    height: 29vh;
+    width: 20vw;
+    margin: 0;
+    margin-left: 0;
     margin-top: 2.04082vw;
     background-color: #1c3142;
     border: .06803vw solid,#1c3000;
@@ -534,9 +599,12 @@ html{
     font-size: 1.02041vw;
     height: 2.25vw;
     width: 4.5vw;
-    
-    margin-left: 18.68027vw;
+    margin-top: .34014vw;
+    margin-left: 15.68027vw;
     font-size: .75rem;
+}
+#InspectButton:hover{
+    transform: scale(1.022);
 }
 
 
@@ -546,12 +614,12 @@ html{
     flex-direction: column;
 }
 .Area{ /*Area to focus on section*/
-     height :27.77778vw;
+     height :35.77778vw;
     width :24.8vw;
     background-color:#172136;
     border: 2px solid,#262933;
     margin-top: 4.5vh;
-    margin-left: 2vw;
+    margin-left: -53.75vw;
     margin-bottom: 3vh;
      padding-top: 0.35vw;
     padding-left: .92593vw;
@@ -592,12 +660,12 @@ html{
 
 
 .weekprogress{
-      height :27.77778vw;
-    width :25vw;
+      height :38.27778vw;
+    width :27.5vw;
     background-color:#172136;
     border: 2px solid,#262933;
-    
-    margin-left: 2vw;
+    margin-top: -81.85vh;
+    margin-left: -27.8vw;
     margin-bottom: 3vh;
      padding-top: 1.23457vw;
     padding-left: .92593vw;
@@ -883,170 +951,94 @@ html{
 
 
 
-
-/*=======================================================
-      LOGIN AND SIGNUP
-  ======================================================
+/*==========================================================
+               TUTORIALS STEPS
+ ==========================================================
 */
-#leftsideoflogin{
-    background-image: url('icons/signup\ and\ login.png') ;
-    clip-path: polygon(0 0, 100% 0, 60% 100%, 0 100%);
-    height: 100vh;
-    width: 170vw;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    filter: brightness(50%);
-   
-     
-}
-#brightnessfull{
-    position: absolute;
-}
-#hoffitfocus{
-    font-size:6rem;
-    margin-top: -1vw;
-    margin-left: 12vw;
-    animation: fadein 1.2s ease-out forwards;
-    opacity: 0;
-    
-    
+
+
+
+/*==================FIRST STEP=============================*/
+#popupdisplayforstep1{
+    margin-top: 40vh;
+    margin-left: 40vw;
 
 }
-
-#poffitfocus{
-    margin-left: 17vw;
-    font-size: 1.25rem;
-    animation: fadein 1.2s ease-out forwards;
-    opacity: 0;
-    
+#h1ofstep1{
+    margin-bottom: 1.34014vw;
+    margin-left: -3vw;
+    font-size: 3rem;
 }
-#imgofloginpage{
-    margin-top: 6vw;
-    margin-left: 15vw;
-    animation: fadein 1.2s ease-out forwards;
-    opacity: 0;
-    
+#midpofstep1{
+    margin-left: 2vw;
 }
-@keyframes fadein{
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
+#lastpofstep1{
+    margin-left: 1vw;
 }
-#loginblock{
-     height: 30.80272vw;
-    width: 32.01361vw;
-    background-color: #172136;
-    margin-left: 0;
-    margin-top: 8.80272vw;
-    margin-right: 18vw;
-    padding-left: 2.04082vw;
-    padding-top: 2.04082vw;
-    padding-right: 2vw;
-    border: .13605vw solid,#262933;
-    opacity: 0;
-    animation: movement 1.3s ease-out forwards;
-    box-shadow: #0f1624;
-    
-     
+#firstpofstep1{
+    margin-left:7.5vw;
 }
-@keyframes movement{
-    from{
-        opacity: 0;
-        transform: translateX(2.72109vw);
-    }
-    to{
-        opacity: 1;
-        transform: translateX(0vw);
-    }
+#nextbutton{
+     background-color: #4abaaf;
+    color:black;
+    font-weight: 100;
+    font-size: 1.02041vw;
+    height: 2.72109vw;
+    width: 5.58639vw;
+    margin-top: 2.8027vw;
+    margin-left: 16.68027vw;
 }
-#h2oflogin{
-    margin-left: 5.36054vw;
-    animation: fadein 1s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
-}
-#poflogin{
-    margin-left: .68027vw;
-    animation: fadein 1s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
-}
-#imgoflogin{
-    margin-left: 8.20272vw;
-    animation: fadein 1s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
-}
-#inputoflogin{
-     padding-left: .34014vw;
-    border: .13605vw solid,#262933;
-    height:2.50204vw;
-    width :24.3vw;
-    background-color:#0f1624;
-    margin-top: .68027vw;
-    animation: fadein 1s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
-}
-.poflogin{
-    margin-top: 1.36054vw;
-    animation: fadein 1s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
-}
-#buttonoflogin{
-      background-color: #4abaaf;
+#skipbutton{
+    background-color: 
+#090d16;
     color:white;
     font-weight: 100;
     font-size: 1.02041vw;
     height: 2.72109vw;
-    width: 24.3vw;
-    margin-top: 2.68027vw;
-    animation: fadein 1s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
+    width: 5.58639vw;
+    margin-top: 2.8027vw;
+    margin-left: -2.68027vw;
+     border: .13605vw solid,#262933;
+}
+
+/*==================== STEP2 ====================*/
+#popupdisplayforstep2{
+    margin-top: 40vh;
+    margin-left: 40vw;
     
+  
+
 }
-#buttonoflogin:hover{
-    transform: scale(1.02);
+#popupoverlay2{
+    position:fixed;
+    background: rgba(0, 0,0, 0.6);
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 100%;
+    top:0;
+    left: 0;
+   z-index:1;
 }
-#noaccountmargin{
-    margin-left: 4.7619vw;
-    margin-top: .68027vw;
-    animation: fadein 1s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
+
+.Todayprogress2{
+   width:55.41vw;
+   height: 55vh;
+   background-color: #172136;
+   border:2px solid,#262933;
+   margin-left: 4vh;
+   margin-top: 5vh;
+   padding-left: 23vw;
+   padding-top: 4vh;
+   z-index: 2;
+
 }
-#nodecor{
-   
-    color:white;
+#flexforstep2dashbaord{
+    display: flex;
 }
-#signupblock{
-     height: 35.80272vw;
-    width: 28.01361vw;
-    background-color: #172136;
-    margin-left: 0;
-    margin-top: 6.80272vw;
-    margin-right: 18vw;
-    padding-left: 2.04082vw;
-    padding-top: 2.04082vw;
-    padding-right: 2vw;
-    border: .13605vw solid,#262933;
-    opacity: 0;
-    animation: movement 1.3s ease-out forwards;
-    
-}
-#pofsignup{
-    margin-left: 3.06122vw;
-    animation: fadein 1s ease-out forwards;
-    animation-delay: 1s;
-    opacity: 0;
-}
+
+
+
 
 
 

@@ -383,6 +383,9 @@ html{
     margin-top: 4vh;
     margin-left: 2vw;
 }
+#backtohome:hover{
+    transform: scale(1.012);
+}
 #info{
      border: .13605vw solid,#262933;
     height: 180vh;

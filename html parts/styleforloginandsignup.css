@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body{
+    display :flex;
+    background-color:#0f1624 ;
+    font-family: "PT Sans", sans-serif;
+    font-style: normal;
+    color: white;
+    margin:0px;
+    padding:0px;
+    overflow-x: hidden;
+    
+    
+  
+  /*animation: fade 0.25s ease;*/
+
+}
+
+ 
+
+
+
+/*=======================================================
+      LOGIN AND SIGNUP
+  ======================================================
+*/
+#leftsideoflogin{
+    background-image: url('icons/signup\ and\ login.png') ;
+    clip-path: polygon(0 0, 100% 0, 60% 100%, 0 100%);
+    height: 100vh;
+    width: 170vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter: brightness(50%);
+   
+     
+}
+#brightnessfull{
+    position: absolute;
+}
+#hoffitfocus{
+    font-size:6rem;
+    margin-top: -1vw;
+    margin-left: 12vw;
+    animation: fadein 1.2s ease-out forwards;
+    opacity: 0;
+    
+    
+
+}
+
+#poffitfocus{
+    margin-left: 17vw;
+    font-size: 1.25rem;
+    animation: fadein 1.2s ease-out forwards;
+    opacity: 0;
+    margin-top: -4.5vw;
+    
+}
+#imgofloginpage{
+    margin-top: 6vw;
+    margin-left: 15vw;
+    animation: fadein 1.2s ease-out forwards;
+    opacity: 0;
+    
+}
+@keyframes fadein{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+#loginblock{
+     height: 30.80272vw;
+    width: 32.01361vw;
+    background-color: #172136;
+    margin-left: 0;
+    margin-top: 8.80272vw;
+    margin-right: 18vw;
+    padding-left: 2.04082vw;
+    padding-top: 2.04082vw;
+    padding-right: 2vw;
+    border: .13605vw solid,#262933;
+    opacity: 0;
+    animation: movement 1.3s ease-out forwards;
+    box-shadow: #0f1624;
+    
+     
+}
+@keyframes movement{
+    from{
+        opacity: 0;
+        transform: translateX(2.72109vw);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0vw);
+    }
+}
+#h2oflogin{
+    margin-left: 5.36054vw;
+    animation: fadein 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+#poflogin{
+    margin-left: .68027vw;
+    animation: fadein 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+#imgoflogin{
+    margin-left: 8.20272vw;
+    animation: fadein 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+#inputoflogin{
+     padding-left: .34014vw;
+    border: .13605vw solid,#262933;
+    height:2.50204vw;
+    width :24.3vw;
+    background-color:#0f1624;
+    margin-top: .18027vw;
+    animation: fadein 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+.poflogin{
+    margin-top: .6054vw;
+    animation: fadein 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+#buttonoflogin{
+      background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 1.02041vw;
+    height: 2.72109vw;
+    width: 24.3vw;
+    margin-top: 1.68027vw;
+    animation: fadein 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    
+}
+#buttonoflogin:hover{
+    transform: scale(1.02);
+}
+#noaccountmargin{
+    margin-left: 4.7619vw;
+    margin-top: .68027vw;
+    animation: fadein 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+#nodecor{
+   
+    color:white;
+}
+#signupblock{
+     height: 36.80272vw;
+    width: 28.01361vw;
+    background-color: #172136;
+    margin-left: 0;
+    margin-top: 4.80272vw;
+    margin-right: 18vw;
+
+    padding-left: 2.04082vw;
+    padding-top: 2.04082vw;
+    padding-right: 2vw;
+    border: .13605vw solid,#262933;
+    opacity: 0;
+    animation: movement 1.3s ease-out forwards;
+    
+}
+#pofsignup{
+    margin-left: 3.06122vw;
+    animation: fadein 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+
+
