@@ -4,6 +4,7 @@
       <meta charset = UTF-8>
       <title>FitFocus</title>
       <link rel = "stylesheet" href = "../style.css">
+       <link rel = "icons" type = "image.png" href = "icons/loginpage fitfocus icon.png">
    </head>
    <body>
     <!--sidebar-->
@@ -73,7 +74,40 @@
     <main>
       <h1 class = "TopBar">Dashboard</h1>
       <!--Progress-->
-      <div id = "flexforstep2dashbaord">
+      
+      
+      <section class = "Todayprogress">
+        <h2>Today's Progress</h2>
+        <p class = "pofD">Your daily goal completion.</p>
+
+        <div class = "progressempty">
+          <div class = "filledprogress">
+            <div class = "progresstext">
+              <!--Temporary Text-->
+              <h2>68%</h2>
+              <p id = "pofTP">Overall</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+      <div class = "Restofcontent">
+      <div id = "popupoverlay2">
+    
+        
+        <div id  = "popupdisplayforstep2">
+          <p id ="firstpofstep2">step 1 of 15</p>
+          <h1 id = "h2ofstep1">Track Your Daily Progress</h1>
+          <p>Your fitness progress bar gives you a clear snapshot of how well you’re performing today.</p>
+          <p id = "midpofstep2">It combines all your habit goals — like steps, hydration, workouts, and other tasks you’ve added — and shows your overall completion as:</p>
+          <h2 id = "h2ofstep2">completed goal amount / total goal amount</h2>
+          <p id = "lastpofstep2">This helps you instantly understand how close you are to finishing your daily targets and keeps you motivated throughout the day.</p>
+           <button id = "skipbutton" onclick = "window.location.href = '../html part.html'">Skip</button>
+          <button id = "nextbutton2" onclick = "window.location.href = 'step3.html'">Next -></button>
+          
+        </div>
+        <div id = "flexforstep2dashbaord">
       <section class = "Todayprogress2">
         <h2>Today's Progress</h2>
         <p class = "pofD">Your daily goal completion.</p>
@@ -89,22 +123,6 @@
         </div>
       </section>
       </div>
-      
-      
-      <div class = "Restofcontent">
-      <div id = "popupoverlay2">
-        
-        
-        <div id  = "popupdisplayforstep2">
-          <p id ="firstpofstep1">step 1 of 15</p>
-          <h1 id = "h1ofstep1">Welcome to Fitfocus</h1>
-          <p>Your personal fitness dashboard to track,improve</p>
-          <p id = "midpofstep1">and Transform your Health. let's</p>
-          <p id = "lastpofstep1">set things up so we can guide you better</p>
-           <button id = "skipbutton">Skip</button>
-          <button id = "nextbutton">Next -></button>
-          
-        </div>
       </div>
 
       <!--Fitness Tracker-->

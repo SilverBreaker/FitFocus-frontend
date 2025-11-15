@@ -4,10 +4,12 @@
       <meta charset = UTF-8>
       <title>FitFocus</title>
       <link rel = "stylesheet" href = "../style.css">
-      <link rel = "icons" type = "image.png" href = "icons/loginpage fitfocus icon.png">
+       <link rel = "icons" type = "image.png" href = "icons/loginpage fitfocus icon.png">
    </head>
    <body>
     <!--sidebar-->
+     
+        
     <aside class = "SideMenu">
         <h1 id = "FitfocusSM">
             <img src = "../icons/fitfocus dumbell.png" width = "60" height = "60">
@@ -15,7 +17,7 @@
         </h1>
         <nav>
             <ul id = "SMlist">
-                 <h3 class = "liele">
+                  <h3 class = "liele">
                         <div class = "flexformenuitems">
                            <div> <img src = "../icons/dashboard icon.png" width = "24" height = "24"></div>
                             <div><a href = "html part.html">Dashboard</a></div>
@@ -56,11 +58,11 @@
                             <div><a href = "reminders.html"><span>Reminders</span></a></div>
                     </div>
                     </h3>
-
             </ul></nav>
-          <a href = "profile.html">
-          <section id = "User">
-      
+        </nav>
+        <a href = "profile.html">
+        <section id = "User">
+            
               <div>
                 <img src = "../icons/user.jpg" height = "45" width="45">
               </div>
@@ -69,32 +71,13 @@
                 <p class  = "pofD">silver@fitfocus.com</p></div>
           </section></a>
     </aside>
-
-    <!--main page-->
     <main>
-      <h1 class = "TopBar">Dashboard</h1>
-      <!--Progress-->
-      <section class = "Todayprogress">
-        <h2>Today's Progress</h2>
-        <p class = "pofD">Your daily goal completion.</p>
 
-        <div class = "progressempty">
-          <div class = "filledprogress">
-            <div class = "progresstext">
-              <!--Temporary Text-->
-              <h2>68%</h2>
-              <p id = "pofTP">Overall</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <div class = "Restofcontent">
-      
 
-      <div id = "popupoverlay">
-        <div id  = "popupdisplayforstep1">
-          <p id ="firstpofstep1">step 0 of 15</p>
+        <h1 class = "TopBar">Counter</h1>
+        <div id = "popupoverlay">
+        <div id  = "popupdisplayforstep9">
+          <p id ="firstpofstep1">step 6 of 15</p>
           <h1 id = "h1ofstep1">Welcome to Fitfocus</h1>
           <p>Your personal fitness dashboard to track,improve</p>
           <p id = "midpofstep1">and Transform your Health. let's</p>
@@ -103,69 +86,31 @@
           <button id = "nextbutton" onclick="location.href = 'step2.html'">Next -></button>
           
         </div>
+        <section class = "Uploadmeapics9">
+            <h2>Upload Your Meal</h2>
+            <p class = "pofD">Upload a picture of your food to calculate its calories and macros.</p>
+            <button id = "mealbutton">Analyse</button>
+        </section>
+         <section class = "nutrition9">
+            <h2>Nutritional Analysis</h2>
+            <p class = "pofD">Here's the estimated nutritional breakdown of your meal.</p>
+
+        </section>
       </div>
+        <section class = "CC">
+        <section class = "Uploadmeapics">
+            <h2>Upload Your Meal</h2>
+            <p class = "pofD">Upload a picture of your food to calculate its calories and macros.</p>
+            <button id = "mealbutton">Analyse</button>
+        </section>
 
-      <!--Fitness Tracker-->
-      <section class = "Fitness-tracker" >
-        <div id = "FlexforFT">
-        <div id = "padaddFT"><h2>Fitness Tracker</h2><p class = "pofD">Log your daily progress for your fitness habits</p></div>
-        <div > <button id = "buttonofFT">add habit</button></div>
-        </div>
+        <section class = "nutrition">
+            <h2>Nutritional Analysis</h2>
+            <p class = "pofD">Here's the estimated nutritional breakdown of your meal.</p>
 
-        <div class = "basecaseofFT">
-          <div id = "flexforFTSgoals">
-            <div><img src = "../icons/fitness tracker icon/pushup.png" height ="60" width="60"></div>
-            <div><h2 id = "textforGoals">Push-Ups</h2></div><div id ="goalquantity"><p class = "pofD">Goal: 50reps</p></div>
-          </div>
-          
-          <div id = "flexforInputFT">
-          <div ><input type = "text" id ="inputforFT" text = "Enter Progress...." ></div>
-          <div><button id = "buttonforGoal">Log</button></div>
-          </div>
-          <div id = "LinearProgress"><!---progress-----></div>
-
-        </div>
-      </section>
-
-
-
-      <!--health inspect-->
-      <section class = "Health-Inspect">
-        <h2>Health Inspect</h2>
-        <p id = "pofHI">An AI-powered review of your daily progress and actionable tips</p>
-        <div id = "OutputHI">
-          <!---Ai Output-->
-        </div>
-        <button id = "InspectButton">Inspect</button>
-
-      </section>
-
-      <!--Areas to Focus on-->
-      <div class = "areaandweekly">
-      <section class = "Area">
-        <div id = "textandiconofarea">
-        <img src = "../icons/areas to focus on.png" alt = "area">
-        <h2>Areas to Focus on</h2></div>
-
-        <div id = "BasecaseofArea">
-          <div id = "FlexforbasecaseArea">
-             <div><img src = "../icons/area to focus on/hydration.png" height = "40"  width = "35"></div>
-             <div id = "textforbasecaseArea"><p>Hydration</p></div>
-             <div id = "paraofbasecaseArea"><p class = "pofD">2/3 Litres</p></div>
-          </div>
-
-          <div id = "progressforbasecaseArea"></div>
-          <div id = "bottomparaforbasecaseArea"><p class = "pofD">You've only had 4/8 glasses of water. Let's drink some more!</p></div>
-        </div>
-
-      </section>
-
-      <!--weekly progress-->
-      <section class = "weekprogress">
-        <h2>Weekly Progress</h2>
-        <p class = "pofD">Your goal completion, weight, and macro trends over the last 7 days..</p>
-      </section></div></div>
-    </main>
+        </section>
+        </section>
     
-   </body>
-</html>
+    </main>
+    </body>
+    </html>

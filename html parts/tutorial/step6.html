@@ -3,65 +3,66 @@
    <head>
       <meta charset = UTF-8>
       <title>FitFocus</title>
-      <link rel = "stylesheet" href = "style.css">
-       <link rel = "icons" type = "image.png" href = "icons/loginpage fitfocus icon.png">
+      <link rel = "stylesheet" href = "../style.css">
+      <link rel = "icons" type = "image.png" href = "icons/loginpage fitfocus icon.png">
    </head>
    <body>
     <!--sidebar-->
     <aside class = "SideMenu">
         <h1 id = "FitfocusSM">
-            <img src = "icons/fitfocus dumbell.png" width = "60" height = "60">
+            <img src = "../icons/fitfocus dumbell.png" width = "60" height = "60">
             <span>FitFocus</span>
         </h1>
         <nav>
             <ul id = "SMlist">
-                  <h3 class = "liele">
+                 <h3 class = "liele">
                         <div class = "flexformenuitems">
-                           <div> <img src = "icons/dashboard icon.png" width = "24" height = "24"></div>
+                           <div> <img src = "../icons/dashboard icon.png" width = "24" height = "24"></div>
                             <div><a href = "html part.html">Dashboard</a></div>
                         </div>
                     </h3>
 
                     <h3 class= "liele">
                         <div class = "flexformenuitems">
-                           <div><img src = "icons/workout icon.png" width = "24" height = "24"></div>
+                           <div><img src = "../icons/workout icon.png" width = "24" height = "24"></div>
                             <div> <a href = "workout.html">Today's Workout</a></div>
                         </div>
                     </h3>
                     
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
-                           <div> <img src = "icons/calorie counter.png" width = "24" height = "24"></div>
+                           <div> <img src = "../icons/calorie counter.png" width = "24" height = "24"></div>
                             <div><a href = "caloriecounter.html"><span>Calorie Counter</span></a></div>
                         </div>
                    </h3>
 
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
-                        <div><img src = "icons/ai coach icon.png" width = "24" height = "24"></div>
+                        <div><img src = "../icons/ai coach icon.png" width = "24" height = "24"></div>
                         <div> <a href = "ai coach.html">AI Coach</a></div>
                         </div>
                     </h3>
 
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
-                        <div><img src = "icons/map.png" width = "24" height = "24"></div>
+                        <div><img src = "../icons/map.png" width = "24" height = "24"></div>
                         <div> <a href = "map.html">map</a></div>
                         </div>
                     </h3>
 
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
-                            <div><img src = "icons/reminder.png" width = "24" height = "26"></div>
+                            <div><img src = "../icons/reminder.png" width = "24" height = "26"></div>
                             <div><a href = "reminders.html"><span>Reminders</span></a></div>
                     </div>
                     </h3>
+
             </ul></nav>
           <a href = "profile.html">
           <section id = "User">
       
               <div>
-                <img src = "icons/user.jpg" height = "45" width="45">
+                <img src = "../icons/user.jpg" height = "45" width="45">
               </div>
               <div id = "username">
                 <h2>Silver</h2>
@@ -81,7 +82,7 @@
           <div class = "filledprogress">
             <div class = "progresstext">
               <!--Temporary Text-->
-              <h2> 0%</h2>
+              <h2>68%</h2>
               <p id = "pofTP">Overall</p>
             </div>
           </div>
@@ -89,18 +90,40 @@
       </section>
       
       <div class = "Restofcontent">
+      
 
+      <div id = "popupoverlay">
+        <div id  = "popupdisplayforstep6">
+          <p id ="firstpofstep6">step 5 of 15</p>
+          <h1 id = "h1ofstep6">Health Inspect</h1>
+          <p>An AI-driven review that analyzes your Fitness Tracker, Areas to Focus On, and Weekly Progress</p>
+          <p id = "midpofstep1">It studies your current habits, weak spots, and trends.</p>
+          <p id = "lastpofstep1">Then provides smart suggestions to improve your health and daily performance.</p>
+           <button id = "skipbutton" onclick="window.location.href = '../html part.html'">Skip</button>
+          <button id = "nextbutton6" onclick="location.href = 'step9.html'">Next -></button>
+          
+        </div>
+         <section class = "Health-Inspect6">
+        <h2>Health Inspect</h2>
+        <p id = "pofHI">An AI-powered review of your daily progress and actionable tips</p>
+        <div id = "OutputHI">
+          <!---Ai Output-->
+        </div>
+        <button id = "InspectButton">Inspect</button>
+
+      </section>
+      </div>
 
       <!--Fitness Tracker-->
       <section class = "Fitness-tracker" >
         <div id = "FlexforFT">
         <div id = "padaddFT"><h2>Fitness Tracker</h2><p class = "pofD">Log your daily progress for your fitness habits</p></div>
-        <div > <button id = "buttonofFT" onclick= "window.location.href='popup.html'">add habit</button></div>
+        <div > <button id = "buttonofFT">add habit</button></div>
         </div>
 
         <div class = "basecaseofFT">
           <div id = "flexforFTSgoals">
-            <div><img src = "icons/fitness tracker icon/pushup.png" height ="60" width="60"></div>
+            <div><img src = "../icons/fitness tracker icon/pushup.png" height ="60" width="60"></div>
             <div><h2 id = "textforGoals">Push-Ups</h2></div><div id ="goalquantity"><p class = "pofD">Goal: 50reps</p></div>
           </div>
           
@@ -130,12 +153,12 @@
       <div class = "areaandweekly">
       <section class = "Area">
         <div id = "textandiconofarea">
-        <img src = "icons/areas to focus on.png" alt = "area">
+        <img src = "../icons/areas to focus on.png" alt = "area">
         <h2>Areas to Focus on</h2></div>
 
         <div id = "BasecaseofArea">
           <div id = "FlexforbasecaseArea">
-             <div><img src = "icons/area to focus on/hydration.png" height = "40"  width = "35"></div>
+             <div><img src = "../icons/area to focus on/hydration.png" height = "40"  width = "35"></div>
              <div id = "textforbasecaseArea"><p>Hydration</p></div>
              <div id = "paraofbasecaseArea"><p class = "pofD">2/3 Litres</p></div>
           </div>
