@@ -4,12 +4,9 @@
       <meta charset = UTF-8>
       <title>FitFocus</title>
       <link rel = "stylesheet" href = "../style.css">
-       <link rel = "icons" type = "image.png" href = "icons/loginpage fitfocus icon.png">
    </head>
    <body>
     <!--sidebar-->
-     
-        
     <aside class = "SideMenu">
         <h1 id = "FitfocusSM">
             <img src = "../icons/fitfocus dumbell.png" width = "60" height = "60">
@@ -58,11 +55,12 @@
                             <div><a href = "reminders.html"><span>Reminders</span></a></div>
                     </div>
                     </h3>
+
             </ul></nav>
         </nav>
         <a href = "profile.html">
         <section id = "User">
-            
+           
               <div>
                 <img src = "../icons/user.jpg" height = "45" width="45">
               </div>
@@ -71,46 +69,83 @@
                 <p class  = "pofD">silver@fitfocus.com</p></div>
           </section></a>
     </aside>
+
     <main>
-
-
-        <h1 class = "TopBar">Counter</h1>
-        <div id = "popupoverlay">
-        <div id  = "popupdisplayforstep9">
-          <p id ="firstpofstep1">step 8 of 11</p>
-          <h1 id = "h1ofstep9">Smart Meal Scanning </h1>
-          <p>Upload photos of your meals directly from your device</p>
-          <p id = "midpofstep9">The AI analyzes the image to estimate calories, macros, and nutrition content.</p>
-          <p id = "lastpofstep1">Helping you track your diet effortlessly without manual entry.</p>
+        <h1 class = "TopBar">Reminders</h1>
+          <div id = "popupoverlay">
+        <div id  = "popupdisplayforstep12">
+          <p id ="firstpofstep12">step 11 of 11</p>
+          <h1 id = "h1ofstep12">Reminders</h1>
+          <p>Set reminders for your workouts, habits, meals, or any fitness task.</p>
+          <p id = "midpofstep1">You’ll receive timely notifications to keep you on track.</p>
+          <p id = "lastpofstep1">Never miss an important daily action again with smart alerts</p>
            <button id = "skipbutton" onclick="window.location.href = '../html part.html'">Skip</button>
-          <button id = "nextbutton" onclick="location.href = 'step10.html'">Next -></button>
+          <button id = "nextbutton" onclick="location.href = '../html part.html'">Finish</button>
           
         </div>
-        <section class = "Uploadmeapics9">
-            <h2>Upload Your Meal</h2>
-            <p class = "pofD">Upload a picture of your food to calculate its calories and macros.</p>
-            <button id = "mealbutton">Analyse</button>
-        </section>
-         <section class = "nutrition9">
-            <h2>Nutritional Analysis</h2>
-            <p class = "pofD">Here's the estimated nutritional breakdown of your meal.</p>
+        <section class = "managereminders12">
+            <div class = "flexforreminders">
+            <div id = "textforreminder"><h2>Manage Reminders</h2>
+            <p class = "pofD">Enable or disable notifications</p></div>
+            <div><button id = "reminderbutton" onclick="window.location.href = 'popupforreminder.html'">+ Add Reminder</button></div>
+            </div>
 
+            <div class = "optionforreminder">
+                <div class = "flexforreminders">
+                    <div class = "optionmargin"><img src ="../icons/drink water.png" width = "50" height =" 60"></div>
+                    <div id = "textforoptionreminder">
+                        <h3>Drink Water</h3>
+                        <p class = "pofD">Every 2 hours</p>
+                    </div>
+
+                   
+            
+                    <div id = "deleteoption">
+                       <a href = #> <img src = "../icons/deletebuttonforoption.png" height = "50" width = "50"></a>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            
         </section>
       </div>
-        <section class = "CC">
-        <section class = "Uploadmeapics">
-            <h2>Upload Your Meal</h2>
-            <p class = "pofD">Upload a picture of your food to calculate its calories and macros.</p>
-            <button id = "mealbutton">Analyse</button>
-        </section>
+        
+        <section class = "managereminders">
+            <div class = "flexforreminders">
+            <div id = "textforreminder"><h2>Manage Reminders</h2>
+            <p class = "pofD">Enable or disable notifications</p></div>
+            <div><button id = "reminderbutton" onclick="window.location.href = 'popupforreminder.html'">+ Add Reminder</button></div>
+            </div>
 
-        <section class = "nutrition">
-            <h2>Nutritional Analysis</h2>
-            <p class = "pofD">Here's the estimated nutritional breakdown of your meal.</p>
+            <div class = "optionforreminder">
+                <div class = "flexforreminders">
+                    <div class = "optionmargin"><img src ="../icons/drink water.png" width = "50" height =" 60"></div>
+                    <div id = "textforoptionreminder">
+                        <h3>Drink Water</h3>
+                        <p class = "pofD">Every 2 hours</p>
+                    </div>
 
+                   
+            
+                    <div id = "deleteoption">
+                       <a href = #> <img src = "../icons/deletebuttonforoption.png" height = "50" width = "50"></a>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            
         </section>
-        </section>
-    
+        
+      
     </main>
-    </body>
-    </html>
+   </body>
+
+   </html>

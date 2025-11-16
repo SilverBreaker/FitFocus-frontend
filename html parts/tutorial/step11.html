@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang = en>
-   <head>
-      <meta charset = UTF-8>
-      <title>FitFocus</title>
-      <link rel = "stylesheet" href = "../style.css">
-       <link rel = "icons" type = "image.png" href = "icons/loginpage fitfocus icon.png">
-   </head>
-   <body>
-    <!--sidebar-->
-     
-        
-    <aside class = "SideMenu">
-        <h1 id = "FitfocusSM">
+<html lang = "en">
+    <head>
+        <meta charset = UTF-8>
+        <title>FitFocus</title>
+        <link rel = "stylesheet" href = "../style.css">
+    </head>
+    <body>
+         <!--sidebar-->
+       <aside class = "SideMenu">
+         <h1 id = "FitfocusSM">
             <img src = "../icons/fitfocus dumbell.png" width = "60" height = "60">
             <span>FitFocus</span>
-        </h1>
+         </h1>
         <nav>
             <ul id = "SMlist">
                   <h3 class = "liele">
@@ -58,11 +55,11 @@
                             <div><a href = "reminders.html"><span>Reminders</span></a></div>
                     </div>
                     </h3>
-            </ul></nav>
+            </ul>
         </nav>
-        <a href = "profile.html">
+         <a href = "profile.html">
         <section id = "User">
-            
+          
               <div>
                 <img src = "../icons/user.jpg" height = "45" width="45">
               </div>
@@ -70,47 +67,44 @@
                 <h2>Silver</h2>
                 <p class  = "pofD">silver@fitfocus.com</p></div>
           </section></a>
-    </aside>
-    <main>
-
-
-        <h1 class = "TopBar">Counter</h1>
-        <div id = "popupoverlay">
-        <div id  = "popupdisplayforstep9">
-          <p id ="firstpofstep1">step 8 of 11</p>
-          <h1 id = "h1ofstep9">Smart Meal Scanning </h1>
-          <p>Upload photos of your meals directly from your device</p>
-          <p id = "midpofstep9">The AI analyzes the image to estimate calories, macros, and nutrition content.</p>
-          <p id = "lastpofstep1">Helping you track your diet effortlessly without manual entry.</p>
+       </aside> 
+   
+       <main>
+          <h1 class = "TopBar">Map</h1>
+           
+      <div id = "popupoverlay">
+        <div id  = "popupdisplayforstep11">
+          <p id ="firstpofstep11">step 10 of 11</p>
+          <h1 id = "h1ofstep11">Fitness Map</h1>
+          <p>See your current location along with nearby gyms, parks, and healthy restaurants</p>
+          <p id = "midpofstep1">Discover fitness-friendly spots around you instantly.</p>
+          <p id = "lastpofstep1">Helping you choose the best places to stay active wherever you are.</p>
            <button id = "skipbutton" onclick="window.location.href = '../html part.html'">Skip</button>
-          <button id = "nextbutton" onclick="location.href = 'step10.html'">Next -></button>
+          <button id = "nextbutton" onclick="location.href = 'step12.html'">Next -></button>
           
         </div>
-        <section class = "Uploadmeapics9">
-            <h2>Upload Your Meal</h2>
-            <p class = "pofD">Upload a picture of your food to calculate its calories and macros.</p>
-            <button id = "mealbutton">Analyse</button>
-        </section>
-         <section class = "nutrition9">
-            <h2>Nutritional Analysis</h2>
-            <p class = "pofD">Here's the estimated nutritional breakdown of your meal.</p>
+        <section class="map11">
+            <h2>Local Health Map</h2>
+            <p class="pofD">Find nearby gyms, healthy restaurants, and parks</p>
+            <div class = "mapINT">
+              
+            </div>
 
-        </section>
+          </section>
       </div>
-        <section class = "CC">
-        <section class = "Uploadmeapics">
-            <h2>Upload Your Meal</h2>
-            <p class = "pofD">Upload a picture of your food to calculate its calories and macros.</p>
-            <button id = "mealbutton">Analyse</button>
-        </section>
+          
 
-        <section class = "nutrition">
-            <h2>Nutritional Analysis</h2>
-            <p class = "pofD">Here's the estimated nutritional breakdown of your meal.</p>
+          
+          <!--map-->
+          <section class="map">
+            <h2>Local Health Map</h2>
+            <p class="pofD">Find nearby gyms, healthy restaurants, and parks</p>
+            <div class = "mapINT">
+              
+            </div>
 
-        </section>
-        </section>
-    
-    </main>
+          </section>
+       </main>
+
     </body>
-    </html>
+</html>
