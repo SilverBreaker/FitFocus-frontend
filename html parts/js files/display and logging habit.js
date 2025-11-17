@@ -1,4 +1,8 @@
-window.onload = displayHabits;
+window.onload =() => {
+    displayHabits();
+    updateOverallCircle(); 
+    
+}
 
 function displayHabits() {
 
@@ -16,14 +20,17 @@ function displayHabits() {
       <div id="flexforFTSgoals">
         <div><img src="icons/fitness tracker icon/pushup.png" height="60" width="60"></div>
         <div><h2 id="textforGoals">${habit.name}</h2></div>
+        
         <div id="goalquantity"><p class="pofD">Goal: ${habit.goal} ${habit.unit}</p></div>
+         <button class="deleteHabit">x</button>
       </div>
+
       
       <div id="flexforInputFT">
         <div><input type="text" id="inputforFT" placeholder="Enter Progress..." ></div>
         <div><button id="buttonforGoal">Log</button></div>
       </div>
-
+      
       <div class="linear-container">
         <div class="linear-fill"></div>
       </div>
@@ -53,9 +60,52 @@ function displayHabits() {
 
         localStorage.setItem("habits", JSON.stringify(habits));
         displayHabits();
+         updateOverallCircle();
     } 
     )
+
+    let deleteBtn = card.querySelector(".deleteHabit");
+
+deleteBtn.addEventListener("click", () => {
+    let habits = JSON.parse(localStorage.getItem("habits")) || [];
+
+    habits.splice(index, 1); 
+
+    localStorage.setItem("habits", JSON.stringify(habits));
+
+    displayHabits(); 
+});
     
   });
-  
+ 
+}
+
+
+
+function updateOverallCircle() {
+    let habits = JSON.parse(localStorage.getItem("habits")) || [];
+
+    let totalProgress = 0;
+    let totalGoal = 0;
+
+    habits.forEach(h => {
+        totalProgress += (h.progress || 0);
+        totalGoal += parseInt(h.goal) || 0;
+    });
+
+    let percent = totalGoal === 0 ? 0 : (totalProgress / totalGoal) * 100;
+    if(percent > 100){
+      percent = 100;
+    }
+    
+    let circle = document.querySelector(".progressempty");
+    circle.style.background =`
+        conic-gradient(
+            #4abaaf ${percent}%,
+            #313135 ${percent}%
+        )
+    `;
+
+    
+    document.querySelector("#progresspercent").textContent = Math.floor(percent) + "%";
 }

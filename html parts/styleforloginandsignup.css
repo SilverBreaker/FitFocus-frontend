@@ -185,5 +185,93 @@ body{
     opacity: 0;
 }
 
+/*====================================================================== 
+           PURCHASE PAGE
+ ======================================================================*/
+ #purchaseblock{
+ height: 56.80272vw;
+    width: 32.01361vw;
+    background-color: #1f2c47;
+    margin-left: 30VW;
+    margin-top: 1vw;
+    margin-right: 18vw;
+    padding-left: 2.04082vw;
+    padding-top: 2.04082vw;
+    padding-right: 2vw;
+    border: .13605vw solid,#262933;
+    margin-bottom: 10vw;
+    
+}
+#paymentid{
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}
+#inputoflogin1{
+     padding-left: .34014vw;
+    border: .13605vw solid,#262933;
+    height:2.50204vw;
+    width :32.3vw;
+    background-color:#0f1624;
+    margin-top: .18027vw;
+    
+}
+#inputoflogin2{
+     padding-left: .34014vw;
+    border: .13605vw solid,#262933;
+    height:2.50204vw;
+    width :15.3vw;
+    background-color:#0f1624;
+    margin-top: .18027vw;
+    
+}
+#flexforexpiration{
+    display: flex;}
 
-
+#cvc{
+    margin-left:1vw ;
+}
+#order{
+    margin-top: 5vw;
+}
+#flexforpurchase1{
+    display: flex;
+}
+#flexp1p{
+    margin-left: 18vw;
+}
+#flexp2p{
+    margin-left:27.2vw;
+    font-weight: 100 ;
+}
+#emp{
+    font-weight: 200;
+}
+#buttonofpurchase{
+  
+      background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 1.02041vw;
+    height: 2.72109vw;
+    width: 32.3vw;
+    margin-top: 1.68027vw;
+    
+    
+} 
+.pofD{ 
+    color: grey;
+    font-weight: 100;
+}
+#backtoplans{
+   background-color: #172136;
+    color:white;
+     border: .13605vw solid,#262933;
+    font-size: 0.94rem;
+    height: 7vh;
+    width: 15vw;
+    margin-top: 4vh;
+    margin-left: 30vw;
+}
+#backtoplans:hover{
+    transform: scale(1.012);
+}

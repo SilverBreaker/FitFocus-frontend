@@ -34,14 +34,14 @@
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
                            <div> <img src = "icons/calorie counter.png" width = "24" height = "24"></div>
-                            <div><a href = "caloriecounter paid.html"><span>Calorie Counter</span></a></div>
+                            <div><a href = "caloriecounter.html"><span>Calorie Counter</span></a></div>
                         </div>
                    </h3>
 
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
                         <div><img src = "icons/ai coach icon.png" width = "24" height = "24"></div>
-                        <div> <a href = "aicoachpaid.html">AI Coach</a></div>
+                        <div> <a href = "ai coach.html">AI Coach</a></div>
                         </div>
                     </h3>
 
@@ -76,6 +76,19 @@
       <main>
           <h1 class = "TopBar"> Workout</h1>
           
+      <div id = "popupoverlay">
+        <div id  = "popupdisplayworkout">
+          <div id = "flexforpopup">
+          
+          <div><h3>Add Workout</h3>
+          <p class = "pofD">Enter Workout details.</p></div>
+          <div><button id = "closeforworkout" onclick ="window.location.href='workout.html'" >X</button></div></div>
+         
+          <div id = "popupoption1"><p>Name</p><input type = "text" id = "inputofpopup" placeholder="e.g.Push-Ups"></div>
+          
+          <button id = "add" >Save</button>
+        </div>
+      </div>
           <div class = "flexforWorkout">
           <div id = "calenderforWorkout">
              
@@ -91,14 +104,13 @@
                  </div>
 
                 </div>
-              
-                 <div id = "workoutcontainer">
-
+                <div id = "bodyofworkout">
+                       <h3 id = "h3ofworkout">it's a Rest Day!</h3>
+                       <p class = "pofD">Relax, recover, and get ready for your next workout.</p>
                  </div>
           </div>
         </div>
       </main>
-      <script src = "js files/calender.js"></script>
-      <script src = "js files/displayworkout.js"></script>
+      <script src = "js files/adding button for workout.js"></script>
     </body>
 </html>

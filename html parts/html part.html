@@ -32,14 +32,14 @@
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
                            <div> <img src = "icons/calorie counter.png" width = "24" height = "24"></div>
-                            <div><a href = "caloriecounter.html"><span>Calorie Counter</span></a></div>
+                            <div><a href = "caloriecounter paid.html"><span>Calorie Counter</span></a></div>
                         </div>
                    </h3>
 
                     <h3 class = "liele">
                         <div class = "flexformenuitems">
                         <div><img src = "icons/ai coach icon.png" width = "24" height = "24"></div>
-                        <div> <a href = "ai coach.html">AI Coach</a></div>
+                        <div> <a href = "aicoachpaid.html">AI Coach</a></div>
                         </div>
                     </h3>
 
@@ -61,11 +61,11 @@
           <section id = "User">
       
               <div>
-                <img src = "icons/user.jpg" height = "45" width="45">
+                <img src = "icons/default user profile.png" height = "45" width="45">
               </div>
               <div id = "username">
-                <h2>Silver</h2>
-                <p class  = "pofD">silver@fitfocus.com</p></div>
+                <h2>User</h2>
+                <p class  = "pofD">user@fitfocus.com</p></div>
           </section></a>
     </aside>
 
@@ -81,7 +81,7 @@
           <div class = "filledprogress">
             <div class = "progresstext">
               <!--Temporary Text-->
-              <h2> 0%</h2>
+              <h2 id = "progresspercent">0%</h2>
               <p id = "pofTP">Overall</p>
             </div>
           </div>
@@ -124,16 +124,7 @@
         <img src = "icons/areas to focus on.png" alt = "area">
         <h2>Areas to Focus on</h2></div>
 
-        <div id = "BasecaseofArea">
-          <div id = "FlexforbasecaseArea">
-             <div><img src = "icons/area to focus on/hydration.png" height = "40"  width = "35"></div>
-             <div id = "textforbasecaseArea"><p>Hydration</p></div>
-             <div id = "paraofbasecaseArea"><p class = "pofD">2/3 Litres</p></div>
-          </div>
-
-          <div id = "progressforbasecaseArea"></div>
-          <div id = "bottomparaforbasecaseArea"><p class = "pofD">You've only had 4/8 glasses of water. Let's drink some more!</p></div>
-        </div>
+        
 
       </section>
 
@@ -141,6 +132,10 @@
       <section class = "weekprogress">
         <h2>Weekly Progress</h2>
         <p class = "pofD">Your goal completion, weight, and macro trends over the last 7 days..</p>
+
+
+        <p id = "weekupgrade">Upgrade to Pro</p>
+        <button id = "upgradeweek" onclick="window.location.href = 'purchase page.html'">Pro Upgrade</button>
       </section></div></div>
     </main>
     <script src = "js files/display and logging habit.js"></script>

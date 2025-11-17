@@ -9,7 +9,7 @@ function displayreminders() {
         card.className = "optionforreminder";
         card.innerHTML = `
         <div class = "flexforreminders">
-                    <div class = "optionmargin"><img src ="icons/drink water.png" width = "50" height =" 60"></div>
+                    <div class = "optionmargin"><img src ="icons/remindericon.png" id = "remindericon" width = "50" height =" 60"></div>
                     <div id = "textforoptionreminder">
                         <h3>${label.name}</h3>
                         <p class = "pofD">Every ${label.time} hours</p>
@@ -18,13 +18,24 @@ function displayreminders() {
                    
             
                     <div id = "deleteoption">
-                       <a href = #> <img src = "icons/deletebuttonforoption.png" height = "50" width = "50"></a>
+                       <button class="deleteHabit">x</button>
                     </div>
 
 
 
                 </div>`
         container.appendChild(card);
+        let deleteBtn = card.querySelector(".deleteHabit");
+
+deleteBtn.addEventListener("click", () => {
+    let habits = JSON.parse(localStorage.getItem("reminders")) || [];
+
+    habits.splice(index, 1); 
+
+    localStorage.setItem("reminders", JSON.stringify(habits));
+
+    displayreminders(); 
+});
     });
 
 }

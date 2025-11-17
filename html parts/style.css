@@ -168,7 +168,7 @@ border: 1px solid rgba(255, 255, 255, 0.2);
     
 }
 #EditChanges{
-    height: 28.02721vw;
+    height: 35.02721vw;
     background-color: #172136;
     width: 47.61905vw;
     margin-top: 2.68027vw;
@@ -204,6 +204,18 @@ border: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 10.44218vw;
   margin-left: 2.04082vw
 }
+#option5Profile{
+  margin-top: 2.44218vw;
+  margin-left: 2.04082vw
+}
+#option6Profile{
+  margin-top: -4.5vw;
+  margin-left: 21.04082vw
+}
+
+
+
+
 .inputforProfile{
        height: 2.38095vw;
     width:  16.60544vw;
@@ -225,7 +237,7 @@ border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 0.94rem;
     height: 7vh;
     width: 8vw;
-    margin-top: 7vh;
+    margin-top: 4vh;
     margin-left: 38vw;;
 }
 #flexforUserDisplay{
@@ -391,6 +403,13 @@ border: 1px solid rgba(255, 255, 255, 0.2);
 }
 #habit-container::-webkit-scrollbar{
     width: .93605vw;
+}
+.deleteHabit{
+  margin-left: 0.25vw;
+  background-color: #0f1624;
+  border: .13605vw solid , rgb(100, 91, 91);
+  color: white;
+  width:.77211vw;
 }
 #buttonofFT{
     background-color: #4abaaf;
@@ -689,8 +708,22 @@ border: 1px solid rgba(255, 255, 255, 0.2);
 
 }
 
-
-
+#weekupgrade{
+    margin-top: 25vh;
+    margin-left: 5vw;
+    font-size: 1.9rem;
+}
+#upgradeweek{
+    background-color: #4abaaf;
+    color:white;
+    font-weight: 100;
+    font-size: 1.02041vw;
+    height: 2.25vw;
+    width: 5.5vw;
+    margin-top: .94014vw;
+    margin-left: 8.98027vw;
+    font-size: .75rem;
+}
 
 
 
@@ -889,7 +922,7 @@ border: 1px solid rgba(255, 255, 255, 0.2);
 }
 #reminder-container{
     margin-top: 1vw;
-    max-height: 29.01361vw;
+    max-height: 27.01361vw;
     overflow-y: auto;
 }
 #reminder-container::-webkit-scrollbar{
@@ -908,6 +941,9 @@ border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .flexforreminders{
     display: flex;
+    justify-content: space-between;
+    padding:.81633vw;
+    align-items: center;
    
 }
 #textforreminder{
@@ -925,12 +961,12 @@ border: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: .81633vw;
 }
 #textforoptionreminder{
-    margin-top: 1vw;
+    margin-top: -1vw;
     margin-left: 0.8vw;
 }
 #deleteoption{
     margin-left: 20vw;
-    margin-top: 1.2vw;
+    margin-top: -1vw;
 }
 #popupdisplayreminder{
     height: 20.80272vw;
@@ -942,7 +978,9 @@ border: 1px solid rgba(255, 255, 255, 0.2);
     padding-top: 2.04082vw;
     border: .13605vw solid,#262933;
 }
-
+#remindericon{
+    margin-top: -1vw;
+}
 
 
 
@@ -954,13 +992,106 @@ border: 1px solid rgba(255, 255, 255, 0.2);
 */
 
 #calenderforWorkout{
-   height: 27.21088vw;
-   width: 20.80272vw;
+   height: 24.21088vw;
+   width: 25.80272vw;
    background-color:#172136 ;
    margin-left: 3.40136vw;
    margin-top: 3.04082vw;
      border: .13605vw solid,#262933;
+max-width: 61.22449vw;
+padding: .68027vw;
 
+}
+#workoutcontainer{
+   margin-top: 1vw;
+    max-height: 300px;
+    overflow-y: auto;
+   
+}
+#workoutcontainer::-webkit-scrollbar{
+    width: .13605vw
+}
+#popupdisplayworkout{
+    height: 17.80272vw;
+    width: 34.01361vw;
+    background-color: #0f1624;
+    margin-left: 34.01361vw;
+    margin-top: 12.80272vw;
+    padding-left: 2.04082vw;
+    padding-top: 2.04082vw;
+    border: .13605vw solid,#262933;
+    animation: fromtop 0.35s ease-out forwards;
+}
+.optionforreminder1{
+    height: 4.40816vw;
+    width: 34.01361vw;
+    background-color: #242935;
+    margin-top: 2.36054vw;
+    margin-left: 1.36054vw;
+    border: .13605vw solid, rgb(122, 111, 111)
+}
+#closeforworkout{
+    height:4.40136vh;
+    width: 2.40136vw;
+    background-color: #0f1624;
+    border: .13605vw solid,#262933;
+    color:white;
+   margin-left: 16.52381vw;
+   margin-top: -1.36054vw;
+    
+}
+.custom-checkbox input {
+  display: none;
+}
+
+
+.custom-checkbox .checkmark {
+  width: 1.4966vw;
+  height: 1.4966vw;
+  border: .13605vw solid rgb(142, 136, 136);
+  border-radius: .34014vw; 
+  display: inline-block;
+  position: relative;
+  transition: 0.2s ease;
+  margin-top: 1vw;
+  margin-left: 0.5vw;
+}
+
+
+.custom-checkbox input:checked + .checkmark {
+  background-color: #303132;
+}
+
+
+.custom-checkbox input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: .40816vw;
+  top: .13605vw;
+  
+  width: .40816vw;
+  height: .81633vw;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+#calenderforWorkout::-webkit-scrollbar{
+    width:.34014vw;
+}
+.fc .fc-daygrid-day,
+.fc .fc-daygrid-day-frame,
+.fc .fc-scrollgrid,
+.fc .fc-scrollgrid table,
+.fc .fc-scrollgrid td,
+.fc .fc-scrollgrid th {
+    border: none !important;
+}
+.fc::-webkit-scrollbar{
+    width:.34014vw
+}
+#deleteoption1{
+    margin-left: 23vw;
+    margin-top: .6vw;
 }
 #workoutday{
    height: 27.21088vw;
@@ -1316,6 +1447,60 @@ border: 1px solid rgba(255, 255, 255, 0.2);
     transform: scale(1.012);
 }
 
+
+
+/*====================STEP7==============================*/
+#popupdisplayforstep7{
+    margin-top: 37vh;
+    margin-left: 10vw;
+    width: 43vw;
+    height: 25vh
+  
+
+}
+#h1ofstep7{
+    margin-bottom: 1.34014vw;
+    margin-left: 2vw;
+    font-size: 3rem;
+    margin-top: 0.75vw;
+}
+#workoutday7{
+   height: 27.21088vw;
+   width: 37.80272vw;
+   background-color:#172136 ;
+   margin-left: 43.40136vw;
+   margin-top: -15.04082vw;
+     border: .13605vw solid,whitesmoke;
+     transform: scale(0.75);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*=================STEP9=========================*/
 .Uploadmeapics9{
     height :24.3vw;
@@ -1499,3 +1684,8 @@ border: 1px solid rgba(255, 255, 255, 0.2);
 #firstpofstep12{
     margin-left: 9.7vw;
 }
+
+
+
+
+
