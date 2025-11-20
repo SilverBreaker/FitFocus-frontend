@@ -22,15 +22,25 @@
             <div id = "poflogin"><p class = "pofD">Enter your credentials to access your account.</p></div>
             
             <p class = "poflogin">Email</p>
-            <input type = "text" placeholder="abc@gmail.com" id = "inputoflogin">
+            <input type = "text" placeholder="abc@gmail.com" id = "inputofemail">
+             
+            <div class = "invalidemailcontainer">
+
+            </div>
+         
 
             <p class = "poflogin">Password</p>
-            <input type = "text" placeholder="1234567890" id = "inputoflogin">
+            <input type = "text" placeholder="1234567890" id = "inputofpasswordlogin">
+
+             <div class = "invalidpasswordcontainer">
+                
+            </div>
 
             <button id = "buttonoflogin" onclick = "window.location.href = 'html part.html'">Sign in</button>
 
            <div id = "noaccountmargin"> <p>Dont have an Account? <a href = "signup.html" id = "nodecor">Sign Up</a></p></div>
         </div>
-        
+    <script src = "js files/login error.js"></script>
+
     </body>
 </html>

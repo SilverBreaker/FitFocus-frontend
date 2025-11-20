@@ -26,6 +26,65 @@ html{
 }    
 
 
+#animationoflanding{
+   position:fixed;
+    background: rgba(0, 0, 1, 1);
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    display: flex;
+    
+    animation: fadeoutanimation 1s ease-out forwards;
+    animation-delay: 4s;
+}
+#textofanimation{
+    font-size: 2.25rem;
+    margin-top: 1.08027vw;
+    margin-left: -1.4014vw;
+
+    animation: fadeinanim 1.8s ease-in;
+}
+#imgofanimation{
+    margin-left: -0.9vw;
+    animation: moveleft 2s ease-out;
+}
+
+@keyframes fadeoutanimation{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+@keyframes moveleft{
+    from{
+        transform: translateX(6.40136vw);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+@keyframes fadeinanim{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes fadinofbutton{
+    from{
+        opacity: 0;
+
+    }
+    to{
+        opacity: 1;
+    }
+}
 
 /*=================TOPBAR==========================*/
 
@@ -53,6 +112,9 @@ html{
     margin-top: 0.5vh;
     margin-left: 83vw;
     z-index: 1000;
+    opacity: 0;
+    animation: fadinofbutton 1s ease-out forwards;
+    animation-delay: 4s;
 }
 #loginoflanding:hover{
    transform: scale(1.02);
@@ -68,6 +130,9 @@ html{
     margin-top: 0.5vh;
     margin-left: 1vw;
     z-index: 1000;
+    opacity: 0;
+    animation: fadinofbutton 1s ease-out forwards;
+    animation-delay: 4s;
 }
 #registeroflanding:hover{
     transform: scale(1.02);

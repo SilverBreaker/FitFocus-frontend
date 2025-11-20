@@ -1,0 +1,90 @@
+
+
+let emailinput = document.getElementById("inputofemail");
+let passinput = document.getElementById("inputofpasswordlogin");
+
+emailinput.addEventListener("input" , function () {
+ 
+let container = document.querySelector(".invalidemailcontainer");
+let email = emailinput.value.trim();
+if(!email || !email.includes("@email.com")){
+  
+  container.innerHTML =  "";
+
+  let card = document.createElement("div");
+  card.innerHTML =`<p id = "invalidemail">Invalid Email. Try Again</p>`
+
+  container.append(card);
+    
+}
+else{
+    container.innerHTML = "";
+}
+})
+
+passinput.addEventListener("input", function() {
+let container = document.querySelector(".invalidpasswordcontainer");
+let pass = passinput.value.trim();
+
+if(!pass || pass.length < 8 || !validpassword(pass)){
+    container.innerHTML =  "";
+
+  let card = document.createElement("div");
+  card.innerHTML =`<p id = "invalidemail">Invalid password</p>`
+
+  container.append(card);
+}
+else{
+    container.innerHTML = "";
+}
+
+})
+
+
+
+function validpassword(passw){
+    let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let lower = "abcdefghijklmnopqrstuvwxyz";
+    let digit ="0123456789"
+    let special = "~`!@#$%^&*()_+{}:<>?,./;'[]-=";
+
+    let count = 0;
+    for(const char of upper){
+        if(passw.includes(char)){
+            count +=1
+            break
+        }
+
+    }
+
+    for(const char of lower){
+        if(passw.includes(char)){
+            count+=1
+            break
+        }
+    }
+
+    for(const char of digit){
+        if(passw.includes(char)){
+            count +=1
+            break
+        }
+    }
+
+    for(const char of special){
+        if(passw.includes(char)){
+            count += 1
+            break
+        }
+    }
+
+    if(count == 4){
+        return true
+    }
+    return false
+}
+
+
+
+
+
