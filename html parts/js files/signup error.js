@@ -20,6 +20,13 @@ if(!email || !email.includes("@email.com")){
 else{
     container.innerHTML = "";
 }
+if(container.innerHTML === ""){
+    let button = document.getElementById("buttonoflogin");
+    button.addEventListener("click", () => {
+
+        window.location.href = "html part.html";
+    })
+}
 })
 
 nameinput.addEventListener("input", function () {
@@ -40,6 +47,13 @@ if(!name){
 else{
    container.innerHTML = ""; 
 }
+if(container.innerHTML=== ""){
+    let button = document.getElementById("buttonoflogin");
+    button.addEventListener("click", () => {
+
+        window.location.href = "html part.html";
+    })
+}
 })
 
 passinput.addEventListener("input", function () {
@@ -57,6 +71,13 @@ if(!pass || pass.length < 8 || !validpassword(pass)){
 }
 else{
     container.innerHTML= "";
+}
+if(container.innerHTML === ""){
+    let button = document.getElementById("buttonoflogin");
+    button.addEventListener("click", () => {
+
+        window.location.href = "html part.html";
+    })
 }
 })
 
@@ -105,6 +126,7 @@ function validpassword(passw){
     }
     return false
 }
+
 
 
 

@@ -36,7 +36,7 @@ html{
     top:0;
     left: 0;
     display: flex;
-    
+
     animation: fadeoutanimation 1s ease-out forwards;
     animation-delay: 4s;
 }
@@ -48,32 +48,46 @@ html{
     animation: fadeinanim 1.8s ease-in;
 }
 #imgofanimation{
+    
     margin-left: -0.9vw;
-    animation: moveleft 2s ease-out;
+    animation: moveleft 1.5s ease-out;
 }
 
 @keyframes fadeoutanimation{
     from{
         opacity: 1;
+        z-index: 1;
+        overflow-y: hidden;
     }
     to{
         opacity: 0;
+        z-index: 0;
+        overflow-y: auto;
+
     }
 }
 @keyframes moveleft{
     from{
-        transform: translateX(6.40136vw);
+        transform: translateX(10.40136vw) rotateZ(100deg);;
+        
+        
     }
     to{
-        transform: translateX(0);
+        transform: translateX(0) rotateZ(0deg);
+      
+        
+       
     }
 }
 @keyframes fadeinanim{
     from{
         opacity: 0;
+      
     }
     to{
         opacity: 1;
+         
+        
     }
 }
 @keyframes fadinofbutton{
@@ -311,6 +325,7 @@ html{
     margin-left:15.72109vw;
     background-color: #1f2c47;
     border: .13605vw solid,#262933;
+    z-index: 1000;
 }
 #free:hover{
     transform: scale(1.04);
@@ -371,6 +386,7 @@ html{
     border: .13605vw solid,#4abaaf;
     margin-left: 2vw;
     margin-top: 15vh;
+   z-index: 1000;
 }
 #paid:hover{
     transform: scale(1.04);
@@ -383,6 +399,7 @@ html{
     border: .13605vw solid,#262933;
     margin-left: 2vw;
     margin-top: 13vh;
+    z-index: 1000;
 }
 #team:hover{
     transform: scale(1.04);
