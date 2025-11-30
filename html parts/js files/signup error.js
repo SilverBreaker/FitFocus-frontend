@@ -3,86 +3,89 @@ let nameinput = document.getElementById("inputofname");
 let emailinput = document.getElementById("inputofemail");
 let passinput = document.getElementById("inputofpasswordlogin");
 
+
+let Emailcontainer = document.querySelector(".invalidemailcontainer");
+ let Namecontainer = document.querySelector(".invalidnamecontainer");
+let passcontainer = document.querySelector(".invalidpasswordcontainer");
+
+
+
+
 emailinput.addEventListener("input" , function () {
  
-let container = document.querySelector(".invalidemailcontainer");
+
 let email = emailinput.value.trim();
-if(!email || !email.includes("@email.com")){
+if(!email || !email.includes("@gmail.com")){
   
-  container.innerHTML =  "";
+  Emailcontainer.innerHTML =  "";
 
   let card = document.createElement("div");
   card.innerHTML =`<p id = "invalidemail">Invalid Email. Try Again</p>`
-
-  container.append(card);
+  button.style.backgroundColor = "grey";
+  Emailcontainer.append(card);
     
 }
 else{
-    container.innerHTML = "";
+    Emailcontainercontainer.innerHTML = "";
+    button.style.backgroundColor = "#4abaaf";
 }
-if(container.innerHTML === ""){
-    let button = document.getElementById("buttonoflogin");
-    button.addEventListener("click", () => {
 
-        window.location.href = "html part.html";
-    })
-}
 })
 
 nameinput.addEventListener("input", function () {
-     let container = document.querySelector(".invalidnamecontainer");
+   
 
 let name = nameinput.value.trim();
 if(!name){
     
-    container.innerHTML = "";
+    Namecontainer.innerHTML = "";
 
     let card = document.createElement("div");
     card.innerHTML  = `<p id = "invalidemail">Invalid Name</p>`;
-
-    container.append(card);
+   button.style.backgroundColor = "grey";
+    Namecontainer.append(card);
 
 
 }
 else{
-   container.innerHTML = ""; 
+   Namecontainer.innerHTML = ""; 
+   button.style.backgroundColor = "#4abaaf";
 }
-if(container.innerHTML=== ""){
-    let button = document.getElementById("buttonoflogin");
-    button.addEventListener("click", () => {
 
-        window.location.href = "html part.html";
-    })
-}
 })
 
 passinput.addEventListener("input", function () {
-  let container = document.querySelector(".invalidpasswordcontainer");
+  
 
 let pass = passinput.value.trim();
 if(!pass || pass.length < 8 || !validpassword(pass)){
-    container.innerHTML = "";
+    passcontainer.innerHTML = "";
 
     let card = document.createElement("div");
     card.innerHTML  = `<p id = "invalidemail">Invalid password</p>`;
-
-    container.append(card);
+    button.style.backgroundColor = "grey";
+    passcontainer.append(card);
 
 }
 else{
-    container.innerHTML= "";
+    passcontainer.innerHTML= "";
+    button.style.backgroundColor = "#4abaaf";
 }
-if(container.innerHTML === ""){
-    let button = document.getElementById("buttonoflogin");
-    button.addEventListener("click", () => {
 
-        window.location.href = "html part.html";
-    })
-}
 })
 
 
 
+let button = document.getElementById("buttonoflogin");
+    button.addEventListener("click", () => {
+        if(Emailcontainer.innerHTML === "" || Namecontainer.innerHTML === "" || passcontainer === "" ){
+
+            if(emailinput.value.trim() != "" && nameinput.value.trim() != "" && passinput.value.trim() != ""){
+                window.location.href = "tutorial/step1.html";
+
+            }
+       }
+    })
 
 
 function validpassword(passw){

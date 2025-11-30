@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FitFocus Dashboard</title>
+    <link rel="icons" type="image.png" href="icons/loginpage fitfocus icon.png">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root {
+            --graph-accent: #64ffda;
+            --graph-text: #dbe8ff;
+            --graph-muted: #90a4b4;
+            --graph-protein: #f1b567;
+            --graph-carbs: #7ccfff;
+            --graph-fat: #f779a1;
+            --graph-danger: #ff5b5b;
+        }
+
+        .weekprogress {
+            display: flex;
+            flex-direction: column;
+            min-height: 450px; 
+            position: relative;
+        }
+
+        /* --- Controls Toolbar --- */
+        .chart-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 8px;
+            background: rgba(255,255,255,0.03);
+            padding: 4px;
+            border-radius: 10px;
+        }
+
+        .chart-toggle {
+            background: transparent;
+            border: none;
+            color: var(--graph-muted);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .chart-toggle.active {
+            background: rgba(100, 255, 218, 0.15);
+            color: var(--graph-accent);
+        }
+
+        .log-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--graph-text);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+        .log-btn:hover { background: rgba(255,255,255,0.1); }
+
+        /* --- Input Panel (Hidden by default) --- */
+        #inputPanel {
+            display: none;
+            background: rgba(15, 20, 27, 0.95); /* slightly more opaque */
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: slideDown 0.3s ease;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .input-group { display: flex; flex-direction: column; gap: 4px; }
+        .input-group label { font-size: 0.75rem; color: var(--graph-muted); }
+        
+        .input-group input, .input-group select {
+            background: #0c1117;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .input-group input:focus { border-color: var(--graph-accent); }
+
+        /* --- Panel Footer & Buttons --- */
+        .panel-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .right-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .save-btn {
+            background: linear-gradient(180deg, rgba(100,255,218,.18), rgba(100,255,218,.12));
+            color: var(--graph-accent);
+            border: 1px solid rgba(100,255,218,.35);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .clear-btn {
+            background: transparent;
+            color: var(--graph-muted);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .clear-btn:hover { background: rgba(255,255,255,0.05); color: #fff; }
+
+        .danger-btn {
+            background: transparent;
+            color: var(--graph-danger); /* Red text */
+            border: none;
+            cursor: pointer;
+            font-size: 0.75rem;
+            padding: 0;
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+        .danger-btn:hover { opacity: 1; }
+
+        /* --- Chart Container --- */
+        .chart-wrapper {
+            flex-grow: 1;
+            position: relative;
+            width: 100%;
+        }
+
+        .chart-view { width: 100%; height: 100%; }
+
+        canvas {
+            width: 100%; 
+            height: 260px; 
+            display: block;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 0.75rem;
+            color: var(--graph-muted);
+            justify-content: flex-end;
+        }
+
+        .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+        .dot.weight { background: var(--graph-accent); box-shadow: 0 0 8px rgba(100,255,218,.5); }
+        .dot.protein { background: var(--graph-protein); }
+        .dot.carbs { background: var(--graph-carbs); }
+        .dot.fat { background: var(--graph-fat); }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <aside class="SideMenu">
+        <h1 id="FitfocusSM">
+            <img src="icons/fitfocus dumbell.png" width="60" height="60">
+            <span>FitFocus</span>
+        </h1>
+        <nav>
+            <ul id="SMlist">
+                <h3 class="liele">
+                    <div class="flexformenuitems">
+                        <div><img src="icons/dashboard icon.png" width="24" height="24"></div>
+                        <div><a href="html part.html">Dashboard</a></div>
+                    </div>
+                </h3>
+                <h3 class="liele">
+                    <div class="flexformenuitems">
+                        <div><img src="icons/workout icon.png" width="24" height="24"></div>
+                        <div><a href="workout.html">Today's Workout</a></div>
+                    </div>
+                </h3>
+                <h3 class="liele">
+                    <div class="flexformenuitems">
+                        <div><img src="icons/calorie counter.png" width="24" height="24"></div>
+                        <div><a href="caloriecounter paid.html"><span>Calorie Counter</span></a></div>
+                    </div>
+                </h3>
+                <h3 class="liele">
+                    <div class="flexformenuitems">
+                        <div><img src="icons/ai coach icon.png" width="24" height="24"></div>
+                        <div><a href="aicoachpaid.html">AI Coach</a></div>
+                    </div>
+                </h3>
+                <h3 class="liele">
+                    <div class="flexformenuitems">
+                        <div><img src="icons/map.png" width="24" height="24"></div>
+                        <div><a href="map.html">map</a></div>
+                    </div>
+                </h3>
+                <h3 class="liele">
+                    <div class="flexformenuitems">
+                        <div><img src="icons/reminder.png" width="24" height="26"></div>
+                        <div><a href="reminders.html"><span>Reminders</span></a></div>
+                    </div>
+                </h3>
+            </ul>
+        </nav>
+        <a href="profile.html">
+            <section id="User">
+                <div>
+                    <img src="icons/default user profile.png" height="45" width="45">
+                </div>
+                <div id="username">
+                    <h2>User</h2>
+                    <p class="pofD">user@fitfocus.com</p>
+                </div>
+            </section>
+        </a>
+    </aside>
+
+    <main>
+        <h1 class="TopBar">Dashboard</h1>
+        
+        <section class="Todayprogress">
+            <h2>Today's Progress</h2>
+            <p class="pofD">Your daily goal completion.</p>
+            <div class="progressempty">
+                <div class="filledprogress">
+                    <div class="progresstext">
+                        <h2 id="progresspercent">0%</h2>
+                        <p id="pofTP">Overall</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="Restofcontent">
+            <section class="Fitness-tracker">
+                <div id="FlexforFT">
+                    <div id="padaddFT">
+                        <h2>Fitness Tracker</h2>
+                        <p class="pofD">Log your daily progress for your fitness habits</p>
+                    </div>
+                    <div><button id="buttonofFT" onclick="window.location.href='popup.html'">add habit</button></div>
+                </div>
+                <div id="habit-container"></div>
+            </section>
+
+            <section class="Health-Inspect">
+                <h2>Health Inspect</h2>
+                <p id="pofHI">An AI-powered review of your daily progress and actionable tips</p>
+                <div id="OutputHI">
+                    </div>
+                <button id="InspectButton">Inspect</button>
+            </section>
+
+            <div class="areaandweekly">
+                <section class="Area">
+                    <div id="textandiconofarea">
+                        <img src="icons/areas to focus on.png" alt="area">
+                        <h2>Areas to Focus on</h2>
+                    </div>
+                </section>
+
+                <section class="weekprogress">
+                    <h2>Weekly Progress</h2>
+                    <p class="pofD">Track your weight and macro trends.</p>
+
+                    <div class="chart-controls">
+                        <div class="toggle-group">
+                            <button class="chart-toggle active" id="btnWeight" onclick="switchGraph('weight')">Weight</button>
+                            <button class="chart-toggle" id="btnMacros" onclick="switchGraph('macros')">Macros</button>
+                        </div>
+                        <button class="log-btn" onclick="toggleInputPanel()">
+                            <span>✎ Log Data</span>
+                        </button>
+                    </div>
+
+                    <div id="inputPanel">
+                        <div class="input-row">
+                            <div class="input-group" style="grid-column: span 2;">
+                                <label for="daySelect">Select Day</label>
+                                <select id="daySelect">
+                                    <option value="Mon">Monday</option>
+                                    <option value="Tue">Tuesday</option>
+                                    <option value="Wed">Wednesday</option>
+                                    <option value="Thu">Thursday</option>
+                                    <option value="Fri">Friday</option>
+                                    <option value="Sat">Saturday</option>
+                                    <option value="Sun">Sunday</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Weight (kg)</label>
+                                <input type="number" id="inWeight" step="0.1" placeholder="70.5">
+                            </div>
+                            <div class="input-group">
+                                <label>Protein (g)</label>
+                                <input type="number" id="inProtein" placeholder="140">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Carbs (g)</label>
+                                <input type="number" id="inCarbs" placeholder="250">
+                            </div>
+                            <div class="input-group">
+                                <label>Fat (g)</label>
+                                <input type="number" id="inFat" placeholder="60">
+                            </div>
+                        </div>
+                        
+                        <div class="panel-footer">
+                            <button class="danger-btn" onclick="resetWeek()">Reset Entire Week</button>
+                            <div class="right-actions">
+                                <button class="clear-btn" onclick="resetDay()">Clear Day</button>
+                                <button class="save-btn" onclick="saveData()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-wrapper">
+                        <div id="viewWeight" class="chart-view">
+                            <div class="chart-legend">
+                                <span><span class="dot weight"></span>Weight (kg)</span>
+                            </div>
+                            <canvas id="weightChart"></canvas>
+                        </div>
+
+                        <div id="viewMacros" class="chart-view" style="display: none;">
+                            <div class="chart-legend">
+                                <span><span class="dot protein"></span>Protein</span>
+                                <span><span class="dot carbs"></span>Carbs</span>
+                                <span><span class="dot fat"></span>Fat</span>
+                            </div>
+                            <canvas id="macrosChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="js files/display and logging habit.js"></script>
+
+    <script>
+        /* --- State Management --- */
+        const DAYS = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+        const defaultData = {
+            days: DAYS,
+            weight: { Mon: null, Tue: null, Wed: null, Thu: null, Fri: null, Sat: null, Sun: null },
+            macros: {
+                Mon: { protein: null, carbs: null, fat: null },
+                Tue: { protein: null, carbs: null, fat: null },
+                Wed: { protein: null, carbs: null, fat: null },
+                Thu: { protein: null, carbs: null, fat: null },
+                Fri: { protein: null, carbs: null, fat: null },
+                Sat: { protein: null, carbs: null, fat: null },
+                Sun: { protein: null, carbs: null, fat: null },
+            }
+        };
+
+        function loadState(){
+            try{
+                const raw = localStorage.getItem("weeklyProgressV2");
+                if(!raw) return structuredClone(defaultData);
+                const parsed = JSON.parse(raw);
+                const merged = structuredClone(defaultData);
+                for(const d of DAYS){
+                    merged.weight[d] = (parsed.weight && d in parsed.weight) ? parsed.weight[d] : null;
+                    merged.macros[d] = (parsed.macros && d in parsed.macros)
+                        ? { protein: nz(parsed.macros[d].protein), carbs: nz(parsed.macros[d].carbs), fat: nz(parsed.macros[d].fat) }
+                        : { protein: null, carbs: null, fat: null };
+                }
+                return merged;
+            } catch(e){ return structuredClone(defaultData); }
+        }
+        function saveState(){
+            localStorage.setItem("weeklyProgressV2", JSON.stringify(state));
+        }
+        function nz(v){ return (v===0 || v) ? v : null; }
+        
+        let state = loadState();
+        let currentGraph = 'weight';
+
+        /* --- UI Interactions --- */
+        function toggleInputPanel() {
+            const p = document.getElementById('inputPanel');
+            const isHidden = window.getComputedStyle(p).display === 'none';
+            p.style.display = isHidden ? 'block' : 'none';
+            
+            if(isHidden) {
+                // Prefill with today's day
+                const todayIdx = (new Date().getDay() + 6) % 7;
+                document.getElementById('daySelect').value = DAYS[todayIdx];
+                loadValuesToInputs(DAYS[todayIdx]);
+            }
+        }
+
+        document.getElementById('daySelect').addEventListener('change', (e) => {
+            loadValuesToInputs(e.target.value);
+        });
+
+        function loadValuesToInputs(day) {
+            const w = state.weight[day];
+            const m = state.macros[day];
+            document.getElementById('inWeight').value = w !== null ? w : '';
+            document.getElementById('inProtein').value = m.protein !== null ? m.protein : '';
+            document.getElementById('inCarbs').value = m.carbs !== null ? m.carbs : '';
+            document.getElementById('inFat').value = m.fat !== null ? m.fat : '';
+        }
+
+        function saveData() {
+            const d = document.getElementById('daySelect').value;
+            const w = document.getElementById('inWeight').value;
+            const p = document.getElementById('inProtein').value;
+            const c = document.getElementById('inCarbs').value;
+            const f = document.getElementById('inFat').value;
+
+            // Update State
+            if(w !== "") state.weight[d] = parseFloat(w);
+            
+            if(p !== "" || c !== "" || f !== "") {
+                state.macros[d] = {
+                    protein: p === "" ? state.macros[d].protein : parseInt(p, 10),
+                    carbs:   c === "" ? state.macros[d].carbs   : parseInt(c, 10),
+                    fat:     f === "" ? state.macros[d].fat     : parseInt(f, 10)
+                };
+            }
+
+            saveState();
+            
+            // Refresh Graphics
+            drawWeightChart();
+            drawMacrosChart();
+            
+            // Close Panel
+            toggleInputPanel();
+        }
+
+        /* --- New Reset Functions --- */
+        function resetDay() {
+            const d = document.getElementById('daySelect').value;
+            if(!confirm(`Are you sure you want to clear data for ${d}?`)) return;
+            
+            // Clear state for this day
+            state.weight[d] = null;
+            state.macros[d] = { protein: null, carbs: null, fat: null };
+            
+            saveState();
+            loadValuesToInputs(d); // Clear inputs visually
+            drawWeightChart();
+            drawMacrosChart();
+        }
+
+        function resetWeek() {
+            if(!confirm("Are you sure you want to reset the entire week? This cannot be undone.")) return;
+            
+            state = structuredClone(defaultData);
+            saveState();
+            
+            const d = document.getElementById('daySelect').value;
+            loadValuesToInputs(d); // Clear inputs visually
+            drawWeightChart();
+            drawMacrosChart();
+        }
+
+        function switchGraph(type) {
+            currentGraph = type;
+            document.getElementById('btnWeight').classList.toggle('active', type === 'weight');
+            document.getElementById('btnMacros').classList.toggle('active', type === 'macros');
+
+            document.getElementById('viewWeight').style.display = type === 'weight' ? 'block' : 'none';
+            document.getElementById('viewMacros').style.display = type === 'macros' ? 'block' : 'none';
+            
+            if(type === 'weight') requestAnimationFrame(drawWeightChart);
+            else requestAnimationFrame(drawMacrosChart);
+        }
+
+        /* --- Canvas Helpers (Same as before) --- */
+        function setupHiDPICanvas(canvas){
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            if(rect.height === 0) return null;
+            canvas.width = Math.round(rect.width * dpr);
+            canvas.height = Math.round(rect.height * dpr);
+            const ctx = canvas.getContext("2d");
+            ctx.scale(dpr, dpr);
+            return ctx;
+        }
+
+        function niceTicks(min, max, maxTicks=6){
+            if(min===max){ max = min+1; }
+            const range = niceNum(max-min, false);
+            const tickSpacing = niceNum(range/(maxTicks-1), true);
+            const niceMin = Math.floor(min/tickSpacing)*tickSpacing;
+            const niceMax = Math.ceil(max/tickSpacing)*tickSpacing;
+            const ticks = [];
+            for(let v = niceMin; v <= niceMax + 0.5*tickSpacing; v += tickSpacing){
+                ticks.push(+v.toFixed(5));
+            }
+            return {ticks, niceMin, niceMax};
+            function niceNum(rng, round){
+                const exp = Math.floor(Math.log10(rng));
+                const frac = rng / Math.pow(10, exp);
+                let niceFrac = 1;
+                if(round){
+                    if(frac < 1.5) niceFrac = 1;
+                    else if(frac < 3) niceFrac = 2;
+                    else if(frac < 7) niceFrac = 5;
+                    else niceFrac = 10;
+                }else{
+                    if(frac <= 1) niceFrac = 1;
+                    else if(frac <= 2) niceFrac = 2;
+                    else if(frac <= 5) niceFrac = 5;
+                    else niceFrac = 10;
+                }
+                return niceFrac * Math.pow(10, exp);
+            }
+        }
+
+        function measureDataRange(vals){
+            const nums = vals.filter(v=>v!==null && isFinite(v));
+            if(nums.length===0) return {min:0, max:10};
+            const min = Math.min(...nums);
+            const max = Math.max(...nums);
+            const pad = (max-min)===0 ? Math.max(1, max*0.1) : (max-min)*0.1;
+            return {min: Math.max(0, min-pad), max: max+pad};
+        }
+
+        function drawGrid(ctx, x, y, w, h){
+            ctx.save();
+            ctx.strokeStyle = "rgba(255,255,255,.08)";
+            ctx.lineWidth = 1;
+            roundRect(ctx, x, y, w, h, 10);
+            ctx.stroke();
+            ctx.beginPath();
+            for(let i=1;i<=4;i++){
+                const yy = y + (h/5)*i;
+                ctx.moveTo(x+8, yy);
+                ctx.lineTo(x+w-8, yy);
+            }
+            for(let j=1;j<=6;j++){
+                const xx = x + (w/7)*j;
+                ctx.moveTo(xx, y+8);
+                ctx.lineTo(xx, y+h-8);
+            }
+            ctx.strokeStyle = "rgba(255,255,255,.05)";
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        function roundRect(ctx,x,y,w,h,r){
+            const radius = Math.min(r, w/2, h/2);
+            ctx.beginPath();
+            ctx.moveTo(x+radius, y);
+            ctx.arcTo(x+w, y, x+w, y+h, radius);
+            ctx.arcTo(x+w, y+h, x, y+h, radius);
+            ctx.arcTo(x, y+h, x, y, radius);
+            ctx.arcTo(x, y, x+w, y, radius);
+            ctx.closePath();
+        }
+
+        function drawAxes(ctx, x, y, w, h, yTicks, yFmt = v => v.toString()){
+            ctx.save();
+            ctx.fillStyle = "#90a4b4";
+            ctx.font = "10px sans-serif"; 
+            ctx.textAlign = "right";
+            ctx.textBaseline = "middle";
+            const yMin = yTicks[0];
+            const yMax = yTicks[yTicks.length-1];
+            for(let i=0;i<yTicks.length;i++){
+                const yy = y + h - ((yTicks[i]-yMin)/(yMax-yMin))*h;
+                ctx.fillText(yFmt(yTicks[i]), x-8, yy);
+            }
+            ctx.textAlign = "center";
+            ctx.textBaseline = "top";
+            for(let i=0;i<DAYS.length;i++){
+                const xx = x + (w/(DAYS.length-1))*i;
+                ctx.fillText(DAYS[i], xx, y+h+6);
+            }
+            ctx.restore();
+        }
+
+        function drawWeightChart(){
+            const canvas = document.getElementById("weightChart");
+            if(canvas.offsetParent === null) return; 
+            const ctx = setupHiDPICanvas(canvas);
+            if(!ctx) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const pad = { left: 45, right: 15, top: 15, bottom: 30 };
+            const x = pad.left, y = pad.top, w = rect.width - pad.left - pad.right, h = rect.height - pad.top - pad.bottom;
+
+            ctx.clearRect(0,0,rect.width,rect.height);
+            drawGrid(ctx, x, y, w, h);
+
+            const values = DAYS.map(d => state.weight[d]);
+            const {min, max} = measureDataRange(values);
+            const {ticks, niceMin, niceMax} = niceTicks(min, max, 6);
+            drawAxes(ctx, x, y, w, h, ticks, v=>v.toFixed(0));
+
+            const points = DAYS.map((d,i)=>{
+                const v = state.weight[d];
+                const px = x + (w/(DAYS.length-1))*i;
+                const py = v===null ? null : (y + h - ((v-niceMin)/(niceMax-niceMin))*h);
+                return {x:px, y:py, v};
+            });
+
+            const have = points.filter(p=>p.y!==null);
+            if(have.length>=2){
+                const g = ctx.createLinearGradient(0, y, 0, y+h);
+                g.addColorStop(0, "rgba(100,255,218,.20)");
+                g.addColorStop(1, "rgba(100,255,218,0)");
+                ctx.beginPath();
+                let started=false;
+                points.forEach((p)=>{
+                    if(p.y===null) return;
+                    if(!started){ ctx.moveTo(p.x, p.y); started=true; }
+                    else ctx.lineTo(p.x, p.y);
+                });
+                ctx.lineTo(points[points.length-1].x, y+h);
+                ctx.lineTo(points.find(p=>p.y!==null).x, y+h);
+                ctx.closePath();
+                ctx.fillStyle = g;
+                ctx.fill();
+            }
+
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "#64ffda";
+            ctx.beginPath();
+            let last=null;
+            for(let i=0;i<points.length;i++){
+                const p = points[i];
+                if(p.y===null){ last=null; continue; }
+                if(!last){ ctx.moveTo(p.x, p.y); last=p; continue; }
+                const xc = (last.x + p.x)/2;
+                const yc = (last.y + p.y)/2;
+                ctx.quadraticCurveTo(last.x, last.y, xc, yc);
+                last = p;
+            }
+            if(last) ctx.lineTo(last.x, last.y);
+            ctx.stroke();
+
+            ctx.fillStyle = "#64ffda";
+            points.forEach(p=>{
+                if(p.y===null) return;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 3, 0, Math.PI*2);
+                ctx.fill();
+            });
+            attachTooltip(canvas, points, (p)=> `⎯ ${p.v?.toFixed(1)} kg`);
+        }
+
+        function drawMacrosChart(){
+            const canvas = document.getElementById("macrosChart");
+            if(canvas.offsetParent === null) return; 
+            const ctx = setupHiDPICanvas(canvas);
+            if(!ctx) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const pad = { left: 45, right: 15, top: 15, bottom: 30 };
+            const x = pad.left, y = pad.top, w = rect.width - pad.left - pad.right, h = rect.height - pad.top - pad.bottom;
+
+            ctx.clearRect(0,0,rect.width,rect.height);
+            drawGrid(ctx, x, y, w, h);
+
+            const vals = [];
+            DAYS.forEach(d=>{
+                const m = state.macros[d];
+                vals.push(m.protein, m.carbs, m.fat);
+            });
+            const {min, max} = measureDataRange(vals);
+            const {ticks, niceMin, niceMax} = niceTicks(min, max, 6);
+            drawAxes(ctx, x, y, w, h, ticks, v=>v.toFixed(0));
+
+            const groupWidth = w / DAYS.length;
+            const barCount = 3;
+            const gapInGroup = 4; 
+            const barWidth = (groupWidth - gapInGroup*2) / barCount;
+            const colors = { protein: "#f1b567", carbs: "#7ccfff", fat: "#f779a1" };
+            const hits = [];
+
+            DAYS.forEach((d, i)=>{
+                const baseX = x + groupWidth*i;
+                const m = state.macros[d];
+                const series = [
+                    { key:"protein", val: m.protein, color: colors.protein, label:"Protein" },
+                    { key:"carbs", val: m.carbs, color: colors.carbs, label:"Carbs" },
+                    { key:"fat", val: m.fat, color: colors.fat, label:"Fat" },
+                ];
+                series.forEach((s, j)=>{
+                    const bx = baseX + gapInGroup + j*barWidth;
+                    const v = s.val;
+                    if(v===null) {
+                        ctx.fillStyle = "rgba(255,255,255,.06)";
+                        ctx.fillRect(bx, y + h - 2, barWidth-1, 2);
+                        return;
+                    }
+                    const bh = ((v - niceMin)/(niceMax - niceMin)) * h;
+                    const by = y + h - bh;
+                    ctx.fillStyle = s.color;
+                    roundFillRect(ctx, bx, by, barWidth-1, bh, 4);
+                    hits.push({ x:bx, y:by, w:barWidth, h:bh, label:`${s.label} • ${d}`, value:`${v} g` });
+                });
+            });
+            attachBarTooltip(canvas, hits);
+        }
+
+        function roundFillRect(ctx,x,y,w,h,r){
+            ctx.beginPath();
+            const rr = Math.min(r, w/2, h/2);
+            ctx.moveTo(x+rr, y);
+            ctx.arcTo(x+w, y, x+w, y+h, rr);
+            ctx.arcTo(x+w, y+h, x, y+h, rr);
+            ctx.arcTo(x, y+h, x, y, rr);
+            ctx.arcTo(x, y, x+w, y, rr);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function attachTooltip(canvas, points, fmt){
+            let tip = canvas._tip;
+            if(!tip){
+                tip = document.createElement("div");
+                tip.style.cssText = "position:absolute; pointer-events:none; padding:6px 8px; font-size:12px; border-radius:6px; background:rgba(13,20,28,.95); border:1px solid rgba(255,255,255,.1); color:#fff; transform:translate(-50%, -120%); opacity:0; transition:opacity .1s;";
+                canvas._tip = tip;
+                canvas.parentElement.appendChild(tip);
+            }
+            const rect = ()=>canvas.getBoundingClientRect();
+            canvas.onmousemove = (e)=>{
+                const r = rect();
+                const cx = e.clientX - r.left;
+                let best=null, bestDist=1e9;
+                points.forEach(p=>{
+                    if(p.y===null) return;
+                    const dx = Math.abs(p.x - cx);
+                    if(dx < bestDist){ best=p; bestDist=dx; }
+                });
+                if(!best || bestDist > 30){ tip.style.opacity="0"; return; }
+                tip.innerText = `${DAYS[points.indexOf(best)]} ${fmt(best)}`;
+                tip.style.left = `${best.x}px`;
+                tip.style.top = `${best.y}px`;
+                tip.style.opacity="1";
+            };
+            canvas.onmouseleave = ()=>{ tip.style.opacity="0"; };
+        }
+
+        function attachBarTooltip(canvas, hits){
+            let tip = canvas._tipBars;
+            if(!tip){
+                tip = document.createElement("div");
+                tip.style.cssText = "position:absolute; pointer-events:none; padding:6px 8px; font-size:12px; border-radius:6px; background:rgba(13,20,28,.95); border:1px solid rgba(255,255,255,.1); color:#fff; transform:translate(-50%, -120%); opacity:0; transition:opacity .1s;";
+                canvas._tipBars = tip;
+                canvas.parentElement.appendChild(tip);
+            }
+            const rect = ()=>canvas.getBoundingClientRect();
+            canvas.onmousemove = (e)=>{
+                const r = rect();
+                const cx = e.clientX - r.left, cy = e.clientY - r.top;
+                const hit = hits.find(h => cx>=h.x && cx<=h.x+h.w && cy>=h.y && cy<=h.y+h.h);
+                if(!hit){ tip.style.opacity="0"; return; }
+                tip.innerText = `${hit.label}\n${hit.value}`;
+                tip.style.left = `${hit.x + hit.w/2}px`;
+                tip.style.top = `${hit.y}px`;
+                tip.style.opacity="1";
+            };
+            canvas.onmouseleave = ()=>{ tip.style.opacity="0"; };
+        }
+
+        // Initial Draw
+        drawWeightChart();
+        window.addEventListener("resize", () => {
+            if(currentGraph === 'weight') drawWeightChart();
+            else drawMacrosChart();
+        });
+    </script>
+</body>
+</html>

@@ -57,12 +57,14 @@ html{
     from{
         opacity: 1;
         z-index: 1;
-        overflow-y: hidden;
+       
+
     }
     to{
         opacity: 0;
         z-index: 0;
-        overflow-y: auto;
+        
+        display: none;
 
     }
 }
@@ -325,7 +327,7 @@ html{
     margin-left:15.72109vw;
     background-color: #1f2c47;
     border: .13605vw solid,#262933;
-    z-index: 1000;
+    
 }
 #free:hover{
     transform: scale(1.04);
@@ -386,7 +388,7 @@ html{
     border: .13605vw solid,#4abaaf;
     margin-left: 2vw;
     margin-top: 15vh;
-   z-index: 1000;
+
 }
 #paid:hover{
     transform: scale(1.04);
@@ -399,10 +401,11 @@ html{
     border: .13605vw solid,#262933;
     margin-left: 2vw;
     margin-top: 13vh;
-    z-index: 1000;
+    
 }
 #team:hover{
     transform: scale(1.04);
+
 }
 #paidbutton{
      background-color: #4abaaf;
@@ -443,12 +446,14 @@ html{
     color:grey;
     margin-left: 65vw;
     font-weight: 100;
+    
 }
 #privacy{
     text-decoration: none;
     color:grey;
     margin-left: 2vw;
     font-weight: 100;
+    
 }
 
 
