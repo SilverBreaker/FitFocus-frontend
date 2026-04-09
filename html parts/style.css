@@ -867,6 +867,14 @@ border: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: .68027vw;
     margin-left: .68027vw;
 }
+#outputareaofai{
+    height: 25.38095vw;
+    width:70.02721vw;
+    background-color:#0f1624;
+    border: .13605vw solid,#191b21;
+    margin-top: 1.02041vw;
+    margin-left: 1.36054vw;
+}
 
 
 
@@ -946,8 +954,9 @@ border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: .9375rem;
     height: 2.72109vw;
     width: 10.20408vw;
-    margin-top: 1.25vw;
-    margin-left: 13.5102vw;
+    position: fixed;
+    top:21%;
+    left:53%;
    
 }
 .flexforreminders{
@@ -1123,12 +1132,13 @@ padding: .68027vw;
 #buttonofworkout{
      background-color: #4abaaf;
     color:white;
+    position: fixed;
     font-weight: 100;
     font-size: 1.02041vw;
     height: 2.72109vw;
     width: 8.98639vw;
-    margin-top: .68027vw;
-    margin-left: 16.68027vw;
+    top: 27%;
+    left:78%;
 }
 
 #bodyofworkout{

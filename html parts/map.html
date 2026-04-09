@@ -1,86 +1,718 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset = UTF-8>
-        <title>FitFocus</title>
-        <link rel = "stylesheet" href = "style.css">
-    </head>
-    <body>
-         <!--sidebar-->
-       <aside class = "SideMenu">
-         <h1 id = "FitfocusSM">
-            <img src = "icons/fitfocus dumbell.png" width = "60" height = "60">
-            <span>FitFocus</span>
-         </h1>
-        <nav>
-            <ul id = "SMlist">
-                  <h3 class = "liele">
-                        <div class = "flexformenuitems">
-                           <div> <img src = "icons/dashboard icon.png" width = "24" height = "24"></div>
-                            <div><a href = "html part.html">Dashboard</a></div>
-                        </div>
-                    </h3>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FitFocus Map - Realtime Recreation Map</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Leaflet CSS (Map Interface) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Leaflet Routing Machine CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-                    <h3 class= "liele">
-                        <div class = "flexformenuitems">
-                           <div><img src = "icons/workout icon.png" width = "24" height = "24"></div>
-                            <div> <a href = "workout.html">Today's Workout</a></div>
-                        </div>
-                    </h3>
+    <style>
+        /* Layout Structure - using 100% to fit parent containers */
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
+        
+        /* Map Container */
+        #map-container {
+            position: relative;
+            width: 100%;
+            height: calc(100% - 64px); /* Fills remaining height after header */
+            z-index: 1; /* Positive z-index to ensure clickability */
+        }
+        
+        /* Map specific styles for better embedding behavior */
+        #map { 
+            height: 100%; 
+            width: 100%; 
+            /* Prevents page scrolling when touching map */
+            touch-action: none; 
+            outline: none;
+        }
+        
+        /* Floating UI Panel */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Navigation Mode Styles */
+        .nav-active .search-ui {
+            transform: translateY(-150%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Navigation HUD */
+        #navHud {
+            transform: translateY(-150%);
+            transition: transform 0.3s ease;
+        }
+        .nav-active #navHud {
+            transform: translateY(0);
+        }
+
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Custom Scrollbar for results */
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #bbb; }
+
+        /* Routing Machine Customization */
+        .leaflet-routing-container {
+            background-color: white;
+            padding: 10px;
+            margin-right: 10px !important;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+            max-height: 30vh;
+            overflow-y: auto;
+            width: 280px !important;
+            font-family: sans-serif;
+            font-size: 13px;
+            border: 1px solid #e2e8f0;
+            display: block; /* Default visible */
+        }
+        .nav-active .leaflet-routing-container { display: none !important; }
+        .leaflet-routing-geocoders { display: none; }
+        
+        /* Tab Active States */
+        .tab-active {
+            border-bottom: 2px solid #2563eb;
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+        .tab-inactive {
+            color: #64748b;
+            background-color: transparent;
+        }
+        .tab-inactive:hover {
+            background-color: #f8fafc;
+            color: #334155;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 flex flex-col h-screen">
+
+    <!-- APP HEADER -->
+    <header class="h-16 bg-white border-b border-gray-200 shadow-sm flex items-center px-4 z-50 gap-3 shrink-0 relative">
+        <!-- Back Button -->
+        <button onclick="goBack()" class="p-2 -ml-2 rounded-full hover:bg-gray-100 text-slate-600 transition cursor-pointer" aria-label="Go Back">
+            <i class="fa-solid fa-arrow-left text-lg"></i>
+        </button>
+
+        <div class="flex items-center gap-2 flex-1">
+            <div class="bg-blue-600 text-white p-2 rounded-lg">
+                <i class="fa-solid fa-map-location-dot text-lg"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg text-slate-800 leading-none">FitFocus Map</h1>
+                <p class="text-[10px] text-slate-500 font-medium tracking-wide">NEARBY RECREATION</p>
+            </div>
+        </div>
+        
+        <button class="text-gray-400 hover:text-gray-600">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+    </header>
+
+    <!-- MAP AREA WRAPPER -->
+    <div id="map-container">
+        
+        <!-- NAVIGATION HUD (Only visible during navigation) -->
+        <div id="navHud" class="absolute top-0 left-0 w-full z-[1100] p-4 flex flex-col items-center pointer-events-none">
+            <div class="bg-emerald-600 text-white w-full max-w-md rounded-xl shadow-xl p-4 flex items-center gap-4 pointer-events-auto">
+                <div id="navIcon" class="text-4xl opacity-90">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </div>
+                <div class="flex-1">
+                    <div id="navInstruction" class="text-xl font-bold leading-tight">Head North</div>
+                    <div id="navDistance" class="text-sm opacity-80 mt-1">Calculated...</div>
+                </div>
+                <button onclick="stopNavigation()" class="bg-white/20 hover:bg-white/30 rounded-full p-2 w-10 h-10 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-white"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sidebar / Floating Control Panel -->
+        <div class="absolute top-4 left-4 z-[1000] w-full max-w-md flex flex-col gap-3 px-4 sm:px-0 search-ui pointer-events-none">
+            
+            <!-- Toggle Bar Container -->
+            <div class="glass-panel rounded-xl overflow-hidden pointer-events-auto">
+                <!-- Tabs -->
+                <div class="flex border-b border-gray-200">
+                    <button id="tabSearch" onclick="switchTab('search')" class="flex-1 py-3 text-sm font-bold transition-colors tab-active">
+                       <i class="fa-solid fa-magnifying-glass mr-2"></i> Find Spot
+                    </button>
+                    <button id="tabFilters" onclick="switchTab('filters')" class="flex-1 py-3 text-sm font-bold transition-colors tab-inactive">
+                       <i class="fa-solid fa-sliders mr-2"></i> Filters
+                    </button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="p-4">
                     
-                    <h3 class = "liele">
-                        <div class = "flexformenuitems">
-                           <div> <img src = "icons/calorie counter.png" width = "24" height = "24"></div>
-                            <div><a href = "caloriecounter paid.html"><span>Calorie Counter</span></a></div>
+                    <!-- Search Section -->
+                    <div id="searchSection">
+                        <div class="flex gap-2 mb-3">
+                            <input type="text" id="searchInput" placeholder="Enter city or area..." 
+                                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm shadow-sm">
+                            <button onclick="manualSearch()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition shadow-sm">
+                                <i class="fa-solid fa-search"></i>
+                            </button>
                         </div>
-                   </h3>
 
-                    <h3 class = "liele">
-                        <div class = "flexformenuitems">
-                        <div><img src = "icons/ai coach icon.png" width = "24" height = "24"></div>
-                        <div> <a href = "aicoachpaid.html">AI Coach</a></div>
-                        </div>
-                    </h3>
-
-                    <h3 class = "liele">
-                        <div class = "flexformenuitems">
-                        <div><img src = "icons/map.png" width = "24" height = "24"></div>
-                        <div> <a href = "map.html">map</a></div>
-                        </div>
-                    </h3>
-
-                    <h3 class = "liele">
-                        <div class = "flexformenuitems">
-                            <div><img src = "icons/reminder.png" width = "24" height = "26"></div>
-                            <div><a href = "reminders.html"><span>Reminders</span></a></div>
+                        <button onclick="locateUser()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg flex items-center justify-center gap-2 transition shadow-sm font-medium">
+                            <i class="fa-solid fa-location-crosshairs"></i> Track My Location
+                        </button>
+                        
+                        <div id="statusMsg" class="text-xs text-center mt-2 text-gray-500 h-4"></div>
                     </div>
-                    </h3>
-            </ul>
-        </nav>
-         <a href = "profile.html">
-        <section id = "User">
-          
-              <div>
-                <img src = "icons/default user profile.png" height = "45" width="45">
-              </div>
-              <div id = "username">
-                <h2>User</h2>
-                <p class  = "pofD">user@fitfocus.com</p></div>
-          </section></a>
-       </aside> 
-   
-       <main>
-          <h1 class = "TopBar">Map</h1>
-          <!--map-->
-          <section class="map">
-            <h2>Local Health Map</h2>
-            <p class="pofD">Find nearby gyms, healthy restaurants, and parks</p>
-            <div class = "mapINT">
-               
+
+                    <!-- Filters Section (Hidden by default) -->
+                    <div id="filterSection" class="hidden">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Show Locations:</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition">
+                                <input type="checkbox" class="category-filter form-checkbox h-4 w-4 text-green-600 rounded" value="park" checked>
+                                <span class="text-sm"><i class="fa-solid fa-tree text-green-600 w-5"></i> Parks</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition">
+                                <input type="checkbox" class="category-filter form-checkbox h-4 w-4 text-blue-600 rounded" value="swimming" checked>
+                                <span class="text-sm"><i class="fa-solid fa-person-swimming text-blue-600 w-5"></i> Pools</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition">
+                                <input type="checkbox" class="category-filter form-checkbox h-4 w-4 text-orange-600 rounded" value="stadium" checked>
+                                <span class="text-sm"><i class="fa-solid fa-landmark text-orange-600 w-5"></i> Stadiums</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition">
+                                <input type="checkbox" class="category-filter form-checkbox h-4 w-4 text-red-600 rounded" value="fitness" checked>
+                                <span class="text-sm"><i class="fa-solid fa-dumbbell text-red-600 w-5"></i> Gyms</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition">
+                                <input type="checkbox" class="category-filter form-checkbox h-4 w-4 text-purple-600 rounded" value="arena" checked>
+                                <span class="text-sm"><i class="fa-solid fa-volleyball text-purple-600 w-5"></i> Arenas</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition">
+                                <input type="checkbox" class="category-filter form-checkbox h-4 w-4 text-teal-600 rounded" value="healthcare" checked>
+                                <span class="text-sm"><i class="fa-solid fa-user-doctor text-teal-600 w-5"></i> Health</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer p-2 hover:bg-gray-100 rounded-lg transition">
+                                <input type="checkbox" class="category-filter form-checkbox h-4 w-4 text-yellow-600 rounded" value="ground" checked>
+                                <span class="text-sm"><i class="fa-solid fa-futbol text-yellow-600 w-5"></i> Grounds</span>
+                            </label>
+                        </div>
+                        <button onclick="refreshData()" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium px-3 py-2 rounded-lg text-sm transition shadow-sm">
+                            Apply Filters
+                        </button>
+                    </div>
+
+                </div>
             </div>
 
-          </section>
-       </main>
+            <!-- Results List (Collapsible on mobile) -->
+            <div class="glass-panel rounded-xl flex flex-col max-h-[30vh] hidden mt-2 pointer-events-auto" id="resultsPanel">
+                <div class="p-3 border-b bg-gray-50 rounded-t-xl flex justify-between items-center">
+                    <span class="font-semibold text-sm">Nearby Places (<span id="resultCount">0</span>)</span>
+                    <button onclick="toggleResults()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+                <div id="placesList" class="overflow-y-auto p-2 custom-scroll space-y-2">
+                    <!-- List items injected here -->
+                </div>
+            </div>
 
-    </body>
+            <!-- Legend -->
+            <div class="glass-panel rounded-xl p-2 mt-2 flex flex-wrap justify-around text-[10px] text-gray-500 pointer-events-auto">
+                <span><i class="fa-solid fa-circle text-green-600"></i> Park</span>
+                <span><i class="fa-solid fa-circle text-blue-600"></i> Pool</span>
+                <span><i class="fa-solid fa-circle text-orange-600"></i> Stadium</span>
+                <span><i class="fa-solid fa-circle text-red-600"></i> Gym</span>
+                <span><i class="fa-solid fa-circle text-purple-600"></i> Arena</span>
+                <span><i class="fa-solid fa-circle text-teal-600"></i> Health</span>
+                <span><i class="fa-solid fa-circle text-yellow-600"></i> Ground</span>
+            </div>
+        </div>
+
+        <!-- The Map Container -->
+        <div id="map"></div>
+
+        <!-- Navigation Start Button (Appears when route is drawn) -->
+        <div id="startNavBtn" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-[1000] hidden">
+            <button onclick="startNavigation()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg flex items-center gap-2 transform transition hover:scale-105">
+                <i class="fa-solid fa-location-arrow"></i> Start Navigation
+            </button>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="fixed inset-0 bg-black/30 z-[2000] hidden flex items-center justify-center backdrop-blur-sm">
+            <div class="bg-white p-6 rounded-2xl shadow-2xl flex flex-col items-center">
+                <div class="loader mb-4"></div>
+                <p class="font-semibold text-gray-700">Scanning Database...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Leaflet Routing Machine JS -->
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+    <script>
+        // --- Back Button Logic ---
+        function goBack() {
+            // Checks if there's history to go back to
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                console.log("No history to go back to. This button is ready for app integration.");
+                // For iframe communication: parent.postMessage('goBack', '*');
+            }
+        }
+
+        // --- Tab Switching Logic ---
+        function switchTab(tabName) {
+            const searchSection = document.getElementById('searchSection');
+            const filterSection = document.getElementById('filterSection');
+            const tabSearch = document.getElementById('tabSearch');
+            const tabFilters = document.getElementById('tabFilters');
+
+            if (tabName === 'search') {
+                searchSection.classList.remove('hidden');
+                filterSection.classList.add('hidden');
+                
+                tabSearch.classList.add('tab-active');
+                tabSearch.classList.remove('tab-inactive');
+                tabFilters.classList.remove('tab-active');
+                tabFilters.classList.add('tab-inactive');
+            } else {
+                searchSection.classList.add('hidden');
+                filterSection.classList.remove('hidden');
+                
+                tabFilters.classList.add('tab-active');
+                tabFilters.classList.remove('tab-inactive');
+                tabSearch.classList.remove('tab-active');
+                tabSearch.classList.add('tab-inactive');
+            }
+        }
+
+        // --- Configuration ---
+        let map;
+        let userMarker;
+        let accuracyCircle; 
+        let routingControl = null; 
+        let watchId = null; 
+        let markersLayer = new L.LayerGroup();
+        let currentLat = 0; 
+        let currentLng = 0;
+        
+        // Navigation State
+        let isNavigating = false;
+        let lastRouteUpdateLat = 0;
+        let lastRouteUpdateLng = 0;
+        let lastSpokenInstruction = "";
+
+        // --- Icons ---
+        const createIcon = (color, iconClass) => {
+            return L.divIcon({
+                className: 'custom-div-icon',
+                html: `<div style="background-color: ${color}; width: 30px; height: 30px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
+                        <i class="${iconClass}" style="color: white; font-size: 14px;"></i>
+                       </div>`,
+                iconSize: [30, 30],
+                iconAnchor: [15, 15],
+                popupAnchor: [0, -15]
+            });
+        };
+
+        const icons = {
+            park: createIcon('#16a34a', 'fa-solid fa-tree'),      
+            swimming: createIcon('#2563eb', 'fa-solid fa-person-swimming'), 
+            stadium: createIcon('#ea580c', 'fa-solid fa-landmark'), 
+            fitness: createIcon('#dc2626', 'fa-solid fa-dumbbell'), 
+            arena: createIcon('#9333ea', 'fa-solid fa-volleyball'),
+            healthcare: createIcon('#0d9488', 'fa-solid fa-user-doctor'),
+            ground: createIcon('#ca8a04', 'fa-solid fa-futbol'), 
+            default: createIcon('#64748b', 'fa-solid fa-map-pin')   
+        };
+
+        const userIcon = L.divIcon({
+            className: 'user-icon',
+            html: `<div style="background-color: #3b82f6; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);"></div>`,
+            iconSize: [20, 20]
+        });
+
+        // --- Initialization ---
+        function initMap() {
+            // Enable all interactive handlers explicitly to ensure integration doesn't disable them
+            map = L.map('map', { 
+                zoomControl: false,
+                scrollWheelZoom: true,
+                dragging: true,
+                tap: true
+            }).setView([51.505, -0.09], 13);
+            
+            // Re-add zoom control to bottom right
+            L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            markersLayer.addTo(map);
+            
+            // CRITICAL: Force map to recognize its size after loading
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 100);
+            
+            // Handle window resizing
+            window.addEventListener('resize', () => {
+                map.invalidateSize();
+            });
+
+            locateUser();
+        }
+
+        // --- 1. Geolocation & Navigation Loop ---
+        function locateUser() {
+            updateStatus("Acquiring GPS signal...", "text-blue-600");
+            
+            if (!navigator.geolocation) {
+                updateStatus("Geolocation not supported", "text-red-500");
+                return;
+            }
+
+            if (watchId !== null) navigator.geolocation.clearWatch(watchId);
+
+            const options = {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0
+            };
+
+            const success = (position) => {
+                const { latitude, longitude, accuracy } = position.coords;
+                updateMapLocation(latitude, longitude, accuracy);
+                updateStatus(`Tracking Location (±${Math.round(accuracy)}m)`, "text-green-600");
+            };
+
+            const error = (err) => {
+                let msg = "GPS Error";
+                if (err.code === 1) msg = "Location Access Denied";
+                else if (err.code === 2) msg = "Position Unavailable";
+                else if (err.code === 3) msg = "GPS Timeout";
+                
+                console.error("GPS Error:", err);
+                updateStatus(msg + " - Try Search", "text-red-500");
+            };
+
+            watchId = navigator.geolocation.watchPosition(success, error, options);
+        }
+
+        function updateMapLocation(lat, lng, accuracy = 0) {
+            const firstFix = (currentLat === 0 && currentLng === 0);
+            currentLat = lat;
+            currentLng = lng;
+
+            // Update UI Marker
+            if (userMarker) map.removeLayer(userMarker);
+            if (accuracyCircle) map.removeLayer(accuracyCircle);
+
+            userMarker = L.marker([lat, lng], { icon: userIcon }).addTo(map);
+            
+            // Draw accuracy circle
+            if (accuracy > 0) {
+                accuracyCircle = L.circle([lat, lng], {
+                    radius: accuracy,
+                    color: '#3b82f6',
+                    fillColor: '#3b82f6',
+                    fillOpacity: 0.15,
+                    weight: 1
+                }).addTo(map);
+                
+                if (firstFix && !isNavigating) map.fitBounds(accuracyCircle.getBounds());
+            }
+
+            // NAVIGATION LOGIC
+            if (isNavigating) {
+                // 1. Auto-center map on user
+                map.setView([lat, lng], 18, { animate: true });
+
+                // 2. Intelligent Rerouting (Throttle: Only if moved > 30m)
+                if (routingControl) {
+                    const dist = map.distance([lat, lng], [lastRouteUpdateLat, lastRouteUpdateLng]);
+                    if (dist > 30) {
+                        const waypoints = routingControl.getWaypoints();
+                        if(waypoints.length > 1) {
+                            waypoints[0].latLng = L.latLng(lat, lng);
+                            routingControl.setWaypoints(waypoints);
+                            lastRouteUpdateLat = lat;
+                            lastRouteUpdateLng = lng;
+                            console.log("Recalculating route...");
+                        }
+                    }
+                }
+            } else if (firstFix) {
+                map.setView([lat, lng], 16);
+                fetchNearbyPlaces();
+            }
+        }
+
+        // --- 2. Routing Logic ---
+        function drawRouteTo(destLat, destLng, destName) {
+            // Remove existing route if any
+            if (routingControl) {
+                map.removeControl(routingControl);
+            }
+
+            // Initialize Routing Machine
+            routingControl = L.Routing.control({
+                waypoints: [
+                    L.latLng(currentLat, currentLng),
+                    L.latLng(destLat, destLng)
+                ],
+                routeWhileDragging: false,
+                showAlternatives: false, // Keep it simple
+                fitSelectedRoutes: true,
+                lineOptions: {
+                    styles: [{color: '#3b82f6', opacity: 0.8, weight: 6}]
+                },
+                createGeocoder: function() { return null; },
+                router: L.Routing.osrmv1({
+                    serviceUrl: 'https://router.project-osrm.org/route/v1'
+                })
+            })
+            .on('routesfound', function(e) {
+                const routes = e.routes;
+                const summary = routes[0].summary;
+                // Show "Start Nav" button when route is ready
+                document.getElementById('startNavBtn').classList.remove('hidden');
+                
+                // If navigating, update the HUD
+                if (isNavigating && routes[0].instructions.length > 0) {
+                   updateNavHUD(routes[0].instructions[0]);
+                }
+            })
+            .addTo(map);
+
+            // Record this position as the start of the route calculation
+            lastRouteUpdateLat = currentLat;
+            lastRouteUpdateLng = currentLng;
+
+            map.closePopup();
+            updateStatus(`Route calculated`, "text-blue-600");
+        }
+
+        // --- 3. Navigation Mode (Google Maps Style) ---
+        function startNavigation() {
+            isNavigating = true;
+            document.body.classList.add('nav-active');
+            document.getElementById('startNavBtn').classList.add('hidden');
+            
+            // Zoom in tight
+            map.setZoom(18);
+            map.panTo([currentLat, currentLng]);
+            
+            // Provide initial voice feedback
+            speak("Starting navigation. Proceed to the highlighted route.");
+        }
+
+        function stopNavigation() {
+            isNavigating = false;
+            document.body.classList.remove('nav-active');
+            
+            // Reset view slightly
+            map.setZoom(16);
+            
+            // Show start button again in case they want to resume
+            document.getElementById('startNavBtn').classList.remove('hidden');
+            
+            // Stop speaking
+            window.speechSynthesis.cancel();
+        }
+
+        function updateNavHUD(instruction) {
+            if (!instruction) return;
+            
+            const hudText = document.getElementById('navInstruction');
+            const hudDist = document.getElementById('navDistance');
+            const hudIcon = document.getElementById('navIcon');
+
+            // Update Text
+            hudText.innerText = instruction.text;
+            hudDist.innerText = `In ${Math.round(instruction.distance)} meters`;
+
+            // Update Icon based on text keywords
+            let iconClass = "fa-arrow-up";
+            const text = instruction.text.toLowerCase();
+            if (text.includes("left")) iconClass = "fa-arrow-turn-up fa-rotate-270"; // rough left
+            else if (text.includes("right")) iconClass = "fa-arrow-turn-up fa-rotate-90"; // rough right
+            else if (text.includes("destination")) iconClass = "fa-flag-checkered";
+            else if (text.includes("roundabout")) iconClass = "fa-spin fa-circle-notch";
+
+            hudIcon.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+
+            // Voice Guidance (Simple implementation)
+            // Only speak if the instruction text has changed significantly
+            if (instruction.text !== lastSpokenInstruction) {
+                speak(`In ${Math.round(instruction.distance)} meters, ${instruction.text}`);
+                lastSpokenInstruction = instruction.text;
+            }
+        }
+
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop previous
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // --- 4. Search & Data Logic ---
+        async function manualSearch() {
+            if (watchId !== null) { navigator.geolocation.clearWatch(watchId); watchId = null; }
+            const query = document.getElementById('searchInput').value;
+            if (!query) return;
+            updateStatus("Searching...", "text-blue-600");
+            try {
+                const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`);
+                const data = await response.json();
+                if (data && data.length > 0) {
+                    const lat = parseFloat(data[0].lat);
+                    const lon = parseFloat(data[0].lon);
+                    updateMapLocation(lat, lon);
+                    updateStatus("Location found", "text-green-600");
+                    fetchNearbyPlaces();
+                } else updateStatus("Location not found", "text-red-500");
+            } catch (e) { updateStatus("Search error", "text-red-500"); }
+        }
+
+        async function fetchNearbyPlaces() {
+            showLoading(true);
+            const categories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
+            if (categories.length === 0) {
+                markersLayer.clearLayers();
+                updateResultsList([]);
+                showLoading(false);
+                return;
+            }
+            const radius = 5000;
+            const center = map.getCenter();
+            let queryParts = [];
+            if (categories.includes('park')) queryParts.push(`node["leisure"="park"](around:${radius},${center.lat},${center.lng}); way["leisure"="park"](around:${radius},${center.lat},${center.lng});`);
+            if (categories.includes('swimming')) queryParts.push(`node["sport"="swimming"](around:${radius},${center.lat},${center.lng}); way["sport"="swimming"](around:${radius},${center.lat},${center.lng});`);
+            if (categories.includes('stadium')) queryParts.push(`node["leisure"="stadium"](around:${radius},${center.lat},${center.lng}); way["leisure"="stadium"](around:${radius},${center.lat},${center.lng});`);
+            if (categories.includes('fitness')) {
+                queryParts.push(`node["leisure"="fitness_centre"](around:${radius},${center.lat},${center.lng});`);
+                queryParts.push(`node["sport"="fitness"](around:${radius},${center.lat},${center.lng});`);
+            }
+            if (categories.includes('arena')) queryParts.push(`node["leisure"="sports_centre"](around:${radius},${center.lat},${center.lng}); way["leisure"="sports_centre"](around:${radius},${center.lat},${center.lng});`);
+            if (categories.includes('healthcare')) {
+                queryParts.push(`node["healthcare"="physiotherapist"](around:${radius},${center.lat},${center.lng});`);
+                queryParts.push(`node["amenity"="clinic"](around:${radius},${center.lat},${center.lng});`);
+                queryParts.push(`node["amenity"="doctors"](around:${radius},${center.lat},${center.lng});`);
+            }
+            if (categories.includes('ground')) {
+                queryParts.push(`node["leisure"="pitch"](around:${radius},${center.lat},${center.lng}); way["leisure"="pitch"](around:${radius},${center.lat},${center.lng});`);
+            }
+            
+            const query = `[out:json][timeout:25];(${queryParts.join('')});out body center;`;
+            try {
+                const response = await fetch('https://overpass-api.de/api/interpreter', { method: 'POST', body: query });
+                const data = await response.json();
+                processData(data.elements);
+            } catch (error) { console.error("Database Error:", error); updateStatus("Error fetching data", "text-red-500"); } 
+            finally { showLoading(false); }
+        }
+
+        function processData(elements) {
+            markersLayer.clearLayers(); 
+            const places = elements.map(el => {
+                const lat = el.lat || el.center.lat;
+                const lon = el.lon || el.center.lon;
+                const name = el.tags.name || "Unnamed Place";
+                let category = 'default';
+                let typeLabel = 'Place';
+                if (el.tags.leisure === 'park') { category = 'park'; typeLabel = 'Park'; }
+                else if (el.tags.sport === 'swimming') { category = 'swimming'; typeLabel = 'Swimming Pool'; }
+                else if (el.tags.leisure === 'stadium') { category = 'stadium'; typeLabel = 'Stadium'; }
+                else if (el.tags.leisure === 'fitness_centre' || el.tags.sport === 'fitness') { category = 'fitness'; typeLabel = 'Gym/Fitness'; }
+                else if (el.tags.leisure === 'sports_centre') { category = 'arena'; typeLabel = 'Sports Arena'; }
+                else if (el.tags.healthcare === 'physiotherapist') { category = 'healthcare'; typeLabel = 'Physiotherapy'; }
+                else if (el.tags.amenity === 'clinic' || el.tags.amenity === 'doctors') { category = 'healthcare'; typeLabel = 'Clinic/Doctor'; }
+                else if (el.tags.leisure === 'pitch') { category = 'ground'; typeLabel = 'Sports Ground'; }
+                
+                return { lat, lon, name, category, typeLabel, id: el.id };
+            });
+            places.forEach(place => {
+                const marker = L.marker([place.lat, place.lon], { icon: icons[place.category] || icons.default });
+                const popupContent = `
+                    <div class="text-center min-w-[150px]">
+                        <h3 class="font-bold text-gray-800">${place.name}</h3>
+                        <p class="text-xs text-gray-500 uppercase font-semibold mt-1">${place.typeLabel}</p>
+                        <div class="flex flex-col gap-2 mt-2">
+                            <button onclick="drawRouteTo(${place.lat}, ${place.lon}, '${place.name.replace(/'/g, "\\'")}')" 
+                               class="bg-blue-600 text-white px-3 py-1.5 rounded text-xs hover:bg-blue-700 shadow-sm transition">
+                               <i class="fa-solid fa-route"></i> Start Route
+                            </button>
+                        </div>
+                    </div>`;
+                marker.bindPopup(popupContent);
+                markersLayer.addLayer(marker);
+            });
+            updateResultsList(places);
+            updateStatus(`Found ${places.length} places nearby`, "text-gray-600");
+        }
+
+        function updateResultsList(places) {
+            const listContainer = document.getElementById('placesList');
+            const resultsPanel = document.getElementById('resultsPanel');
+            const countSpan = document.getElementById('resultCount');
+            listContainer.innerHTML = '';
+            countSpan.innerText = places.length;
+            if (places.length > 0) resultsPanel.classList.remove('hidden'); else resultsPanel.classList.add('hidden');
+            places.forEach(place => {
+                const item = document.createElement('div');
+                item.className = 'bg-white p-3 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer flex justify-between items-center';
+                item.innerHTML = `<div><div class="font-medium text-sm text-gray-800">${place.name}</div><div class="text-xs text-gray-500">${place.typeLabel}</div></div><i class="fa-solid fa-location-arrow text-gray-300 hover:text-blue-500"></i>`;
+                item.onclick = () => { map.setView([place.lat, place.lon], 16); markersLayer.eachLayer(layer => { if (Math.abs(layer.getLatLng().lat - place.lat) < 0.0001) layer.openPopup(); }); };
+                listContainer.appendChild(item);
+            });
+        }
+
+        function refreshData() { fetchNearbyPlaces(); }
+        function updateStatus(msg, colorClass) { const el = document.getElementById('statusMsg'); el.innerHTML = msg; el.className = `text-xs text-center mt-2 ${colorClass} h-4 transition-colors font-medium`; }
+        function showLoading(show) { const overlay = document.getElementById('loadingOverlay'); if (show) overlay.classList.remove('hidden'); else overlay.classList.add('hidden'); }
+        function toggleResults() { const list = document.getElementById('placesList'); list.style.display = list.style.display === 'none' ? 'block' : 'none'; }
+
+        window.onload = initMap;
+        document.getElementById('searchInput').addEventListener('keypress', function (e) { if (e.key === 'Enter') manualSearch(); });
+
+    </script>
+</body>
 </html>
