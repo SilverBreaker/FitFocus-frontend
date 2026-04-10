@@ -896,7 +896,7 @@ border: 1px solid rgba(255, 255, 255, 0.2);
     background-color:#172136;
     border: .13605vw solid,#262933;
     
-    margin-left: 3.40136vw;
+    margin-left: 18.40136vw;
     margin-bottom: 3.40136vw;
     margin-top: 2.04082vw;
      padding-top: 1.36054vw;
@@ -911,10 +911,15 @@ border: 1px solid rgba(255, 255, 255, 0.2);
     margin-left: 1.36054vw;
     padding-top: .98027vw;
     padding-left: 1.06054vw;
+    filter: brightness(90%);
 
 }
 #tempmap{
-    filter: brightness(50%);
+    filter: brightness(25%);
+}
+.mapsection{
+    margin-left: 5.8027vw;
+    margin-top:  1vh;
 }
 
 
